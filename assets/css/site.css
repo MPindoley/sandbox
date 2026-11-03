@@ -200,7 +200,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 .about__portrait { width: min(44vw, 42rem); aspect-ratio: 1; margin-top: auto; margin-bottom: calc(min(44vw, 42rem) * -0.2 - clamp(2rem, 3.9vw, 3.5rem)); overflow: hidden; background: var(--field-2-step); }
 .about__portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
 .about__right { padding: clamp(2rem, 3.9vw, 3.5rem) clamp(2rem, 3.9vw, 3.5rem) clamp(2rem, 3.9vw, 3.5rem) 0; display: flex; flex-direction: column; gap: 2.5rem; align-items: flex-start; }
-.about__quote p { font-style: italic; font-size: var(--step-statement); line-height: 1.25; max-width: 24ch; }
+.about__quote p { font-style: italic; font-size: var(--step-statement); line-height: 1.3; max-width: 24ch; }
 .about__block { max-width: 34rem; }
 .about__block h3 { font-size: var(--step-lead); letter-spacing: -0.015em; }
 .about__block p { margin-top: 0.6rem; color: var(--field-2-soft); }
@@ -219,7 +219,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 .card--ink { background: var(--field-2); color: var(--field-2-ink); }
 .card__head { width: 100%; display: block; text-align: left; padding: 0 clamp(1.25rem, 2.5vw, 2rem) 2.75rem; font-family: var(--font-display); }
 .card__tab { position: absolute; top: 0; left: calc(var(--n) * var(--step)); width: var(--tab-w); height: var(--tab-h); display: flex; align-items: center; padding-inline: clamp(1rem, 2.5vw, 2rem); font-weight: 500; font-size: var(--step-small); }
-.card__q { display: block; padding-top: 1rem; font-weight: 500; font-size: var(--step-lead); letter-spacing: -0.01em; line-height: 1.25; }
+.card__q { display: block; padding-top: 1rem; font-weight: 500; font-size: var(--step-lead); letter-spacing: -0.01em; line-height: 1.3; }
 .card__head[aria-expanded="true"] .card__q { font-weight: 700; }
 .card__a { display: grid; grid-template-rows: 1fr; padding: 0 clamp(1.25rem, 2.5vw, 2rem) 3.5rem; margin-top: -1.5rem; }
 .card__a[hidden] { display: none; }
