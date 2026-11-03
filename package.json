@@ -1,0 +1,13 @@
+{
+  "name": "matthew-pindoley-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-single.mjs",
+    "test": "node tests/fee.test.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.24.0",
+    "three": "0.170.0"
+  }
+}

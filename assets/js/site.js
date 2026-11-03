@@ -34,7 +34,12 @@ if ('IntersectionObserver' in window) {
 const videos = $$('video');
 if (!reduced && 'IntersectionObserver' in window) {
   const vio = new IntersectionObserver((entries) => {
-    for (const e of entries) e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause();
+    for (const e of entries) {
+      const v = e.target;
+      // the statement's thumbnail plays the process film's own file instead of a second copy
+      if (v.dataset.share && !v.src) v.src = document.querySelector(v.dataset.share)?.src || '';
+      e.isIntersecting ? v.play().catch(() => {}) : v.pause();
+    }
   }, { threshold: 0.2 });
   videos.forEach((v) => vio.observe(v));
 }
@@ -53,12 +58,30 @@ const MIN = 4, SPAN = Math.log10(50e6) - 4;
 const toAum = (t) => { const v = 10 ** (MIN + (t / 1000) * SPAN); const p = 10 ** (Math.floor(Math.log10(v)) - 1); return Math.round(v / p) * p; };
 const toT = (aum) => Math.round(Math.min(1, Math.max(0, (Math.log10(Math.max(aum, 1e4)) - MIN) / SPAN)) * 1000);
 
+// the figure rolls to its new value; screen readers hear the settled result once
+const live = $('#fee-live');
+let shown = null, rollId = 0, liveTimer;
+function roll(to) {
+  if (reduced || shown === null) { shown = to; out.textContent = money(to); return; }
+  const from = shown, t0 = performance.now(), id = ++rollId;
+  const step = (now) => {
+    if (id !== rollId) return;
+    const k = Math.min(1, (now - t0) / 450);
+    shown = from + (to - from) * (1 - (1 - k) ** 3);
+    out.textContent = money(shown);
+    if (k < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
 function render(aum) {
   const r = calcFee(aum);
-  out.textContent = money(r.fee);
+  roll(r.fee);
   detail.textContent = aum > 0
     ? `${pct.format((r.fee / aum) * 100)}% effective · ${money(r.fee / 12)} a month · ${money(r.fee / 4)} a quarter`
     : 'Enter a portfolio value to see the fee.';
+  clearTimeout(liveTimer);
+  liveTimer = setTimeout(() => { live.textContent = `Estimated annual fee ${money(r.fee)}. ${detail.textContent}`; }, 600);
   partsEl.replaceChildren(...r.parts.map((p) => {
     const li = document.createElement('li');
     for (const t of [p.label, p.rate, money(p.fee)]) { const s = document.createElement('span'); s.textContent = t; li.append(s); }
