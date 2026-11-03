@@ -422,7 +422,7 @@ p { max-width: 62ch; text-wrap: pretty; }
 .curtain__bar { position: relative; width: 9rem; height: 0.5rem; overflow: hidden; background: var(--field-2-step); }
 .curtain__bar::after { content: ""; position: absolute; inset: 0; background: var(--accent); transform: scaleX(0); transform-origin: left; animation: bar-fill 380ms var(--ease-out) forwards; }
 /* the loupe is a floating overlay that follows the pointer over the glassware (taste-skill-ignore) */
-.loupe { position: fixed; left: 0; top: 0; z-index: 30; width: 168px; height: 168px; overflow: hidden; pointer-events: none; isolation: isolate; opacity: 0; scale: 0.6; transition: opacity 200ms ease, scale 320ms var(--ease-out); box-shadow: 0 18px 40px rgba(13, 27, 46, 0.24); } /* taste-skill-ignore: overlay */
+.loupe { position: fixed; left: 0; top: 0; z-index: 30; width: 168px; height: 168px; overflow: hidden; pointer-events: none; isolation: isolate; opacity: 0; scale: 0.6; transition: opacity 200ms ease, scale 320ms var(--ease-out); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2); } /* taste-skill-ignore: overlay */
 .loupe.is-on { opacity: 1; scale: 1; }
 .loupe img { position: absolute; left: 0; top: 0; max-width: none; mix-blend-mode: multiply; }
 .loupe[data-tone="ink"] img { filter: invert(1); mix-blend-mode: screen; }
