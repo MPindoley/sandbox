@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthew Pindoley, SE-AWMA® · Wealth Management Advisor · Toledo, Ohio</title>
+<meta name="description" content="Matthew Pindoley, SE-AWMA®, is a fiduciary wealth management advisor in Toledo, Ohio. Financial, retirement, investment, tax, insurance and estate planning, with every fee published.">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://matthewpindoley.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Matthew Pindoley, SE-AWMA® · Wealth Management Advisor">
+<meta property="og:description" content="Wealth advice, clear as glass. A fiduciary advisor in Toledo, the Glass City, with every fee published.">
+<meta property="og:image" content="https://res.cloudinary.com/dfabtxqiy/image/upload/q_auto:good,w_1200/v1772661877/headshot_ztmhku.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js')</script>
+<script type="importmap">{ "imports": { "three": "./assets/vendor/three/three.module.min.js" } }</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "FinancialService", "name": "Matthew Pindoley, SE-AWMA®",
+  "url": "https://matthewpindoley.com/", "telephone": "+1-419-887-1002", "email": "Matthew.Pindoley@osaicwealth.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Toledo", "addressRegion": "OH", "addressCountry": "US" },
+  "areaServed": ["OH", "FL", "MI", "IL", "PA", "TX", "SC", "NV"] }
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head wrap">
+  <a class="wordmark" href="#top">Matthew Pindoley</a>
+  <nav class="site-nav" id="site-nav" aria-label="Main">
+    <ul>
+      <li><a class="link" href="#fees">Fees</a></li>
+      <li><a class="link" href="#services">Services</a></li>
+      <li><a class="link" href="#process">Process</a></li>
+      <li><a class="link" href="#about">About</a></li>
+      <li><a class="link" href="https://app.osaic.com/equipt/" target="_blank" rel="noopener noreferrer">Client login<span class="sr-only"> (opens Osaic’s secure site in a new tab)</span></a></li>
+    </ul>
+    <a class="button button--small" href="#contact">Request a consultation</a>
+  </nav>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+</header>
+
+<main id="main">
+
+  <!-- Hero: one glass block, enormous, cropped by the viewport -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero__copy wrap">
+      <h1 class="hero__title display lines" id="hero-title">
+        <span class="line"><span data-line style="--i:0">Wealth advice,</span></span>
+        <span class="line"><span data-line style="--i:1">clear as glass</span></span>
+      </h1>
+      <p class="hero__lead" data-load style="--d:420ms">Matthew Pindoley, SE-AWMA®, is a fiduciary wealth advisor in Toledo, the Glass City. Every fee is published, and every recommendation is made in your interest.</p>
+      <div class="hero__actions" data-load style="--d:520ms">
+        <a class="button" href="#contact">Request a consultation</a>
+        <a class="link link-plain" href="#fees">See what you’d pay</a>
+      </div>
+      <p class="hero__check small" data-load style="--d:600ms">Check my background on <a class="link-plain" href="https://brokercheck.finra.org/" target="_blank" rel="noopener noreferrer">FINRA BrokerCheck</a>.</p>
+    </div>
+    <div class="hero__glass" aria-hidden="true">
+      <picture><source media="(max-width: 47.99em)" srcset="assets/img/glass-block-phone.jpg" width="780" height="820"><img class="hero__poster" src="assets/img/glass-block.jpg" width="1080" height="1350" alt="" fetchpriority="high"></picture>
+      <canvas class="hero__canvas"></canvas>
+    </div>
+  </section>
+
+  <!-- Intro statement -->
+  <section class="intro wrap" aria-label="Approach">
+    <p class="intro__statement" data-reveal>
+      Toledo <span class="thumb"><img src="assets/img/cherry-street-bridge-and-skyline-toledo-ohio.jpg" width="1500" height="969" alt="Old postcard of the Cherry Street Bridge and the Toledo skyline" loading="lazy"></span> has made glass since 1888. I plan the way good glass is made: slowly <span class="thumb"><video src="assets/video/glassblowing.mp4" poster="assets/video/glassblowing-poster.jpg" muted loop playsinline preload="metadata" aria-label="A glassblower turning a glowing gather of glass"></video></span>, in the open <span class="thumb"><img src="assets/img/glass-pavilion-toledo-museum-of-art-monroe-2.jpg" width="1800" height="1350" alt="The curved glass walls of the Toledo Museum of Art Glass Pavilion" loading="lazy"></span>, with every fee in plain view.
+    </p>
+  </section>
+
+  <!-- Fees: two plans, two fields -->
+  <section class="fees" id="fees" aria-label="Fees">
+    <div class="plan plan--full" id="calculator">
+      <h2 class="head">Full planning</h2>
+      <p class="plan__lead">One fee covers investment management, financial planning, ongoing strategy and coordination. Type your portfolio to see it.</p>
+
+      <form class="calc" data-ui onsubmit="return false">
+        <label class="calc__label" for="aum-text">Portfolio value</label>
+        <div class="calc__inputs">
+          <input class="field calc__text" id="aum-text" name="aum" type="text" inputmode="decimal" autocomplete="off" value="$750,000" aria-describedby="aum-hint">
+          <input class="calc__range" id="aum-range" type="range" min="0" max="1000" step="1" value="500" aria-label="Portfolio value slider">
+        </div>
+        <p class="calc__hint small" id="aum-hint">Shorthand works: 750k, 2.5m.</p>
+      </form>
+
+      <div class="plan__price" aria-live="polite">
+        <p class="price"><output class="price__value nums" id="fee-out" for="aum-text aum-range">$5,250</output> <span class="price__per">a year</span></p>
+        <p class="price__detail nums" id="fee-detail">0.70% effective · $438 a month · $1,313 a quarter</p>
+        <ul class="price__parts nums" id="fee-parts">
+          <li><span>Whole portfolio, $500K breakpoint</span><span>0.70%</span><span>$5,250</span></li>
+        </ul>
+      </div>
+
+      <table class="schedule nums" data-ui>
+        <caption class="sr-only">The annual fee schedule</caption>
+        <thead><tr><th scope="col">Portfolio</th><th scope="col">Rate</th><th scope="col">How it applies</th></tr></thead>
+        <tbody>
+          <tr data-tier="0"><td>Under $250K</td><td>1.00%</td><td>Whole portfolio</td></tr>
+          <tr data-tier="1"><td>$250K to $500K</td><td>0.80%</td><td>Whole portfolio</td></tr>
+          <tr data-tier="2"><td>$500K to $1M</td><td>0.70%</td><td>Whole portfolio</td></tr>
+          <tr data-tier="3"><td>First $5M</td><td>0.50%</td><td>Like tax brackets, from $1M</td></tr>
+          <tr data-tier="4"><td>$5M to $15M</td><td>0.25%</td><td>On that portion</td></tr>
+          <tr data-tier="5"><td>$15M to $30M</td><td>0.175%</td><td>On that portion</td></tr>
+          <tr data-tier="6"><td>$30M and above</td><td>0.25%</td><td>Flat, on everything</td></tr>
+        </tbody>
+      </table>
+
+      <div class="plan__foot">
+        <p class="plan__note">Fund expense ratios are separate, and I keep them as low as I can. Your assets stay in your name at a regulated third-party custodian.</p>
+        <a class="button button--ink" href="#contact">Request a consultation</a>
+      </div>
+    </div>
+
+    <div class="plan plan--cash">
+      <div class="plan__sticky">
+      <h2 class="head">Savings only</h2>
+      <p class="plan__lead">If all you hold is a money market, a single bond or a single CD, and you don’t need a managed plan, there is no advisory fee.</p>
+      <p class="plan__note">Many clients come to me from CDs, savings and money markets. Sometimes that is all they need. Certain long-held fixed or insurance products can carry a commission inside the product; I tell you before you decide, every time.</p>
+      <div class="plan__foot">
+        <p class="price"><span class="price__value nums">$0</span> <span class="price__per">a year</span></p>
+        <a class="link link-plain" href="#questions">Read the fee questions</a>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services: specimens on colour tiles -->
+  <section class="services wrap" id="services" aria-labelledby="services-title">
+    <div class="services__intro" data-reveal>
+      <h2 class="head" id="services-title">One plan, six disciplines</h2>
+      <p>Libbey cut these glasses in Toledo in 1904, every piece from one pattern. A financial plan should hold together the same way: each decision cut to fit the others.</p>
+    </div>
+    <ul class="specimens">
+      <li class="specimen" data-reveal style="--i:0">
+        <div class="specimen__tile tile--mint"><img src="assets/img/wineglass.jpg" width="900" height="1200" alt="Cut glass wineglass, Libbey Glass Company, 1904" loading="lazy"></div>
+        <h3 class="specimen__name">Investment management</h3>
+        <p class="specimen__fact">Evidence-based portfolios, rebalanced and tax-loss harvested, kept in line with your plan when markets make discipline hardest.</p>
+      </li>
+      <li class="specimen specimen--wide" data-reveal style="--i:1">
+        <div class="specimen__tile tile--photo"><img src="assets/img/glass-block-wall-sunlight-reflection-zlin.jpg" width="1800" height="1350" alt="Sunlight passing through a wall of glass blocks" loading="lazy"></div>
+        <h3 class="specimen__name">Financial planning</h3>
+        <p class="specimen__fact">Income, spending, assets, debts, goals and timeline mapped into one living roadmap, so your savings, taxes, insurance and investments point the same way.</p>
+      </li>
+      <li class="specimen" data-reveal style="--i:2">
+        <div class="specimen__tile tile--surface"><img src="assets/img/goblet.jpg" width="900" height="1200" alt="Cut glass goblet, Libbey Glass Company, 1904" loading="lazy"></div>
+        <h3 class="specimen__name">Wealth accumulation</h3>
+        <p class="specimen__fact">The right accounts, contributions and allocation for your risk and time horizon, so what you earn compounds on purpose.</p>
+      </li>
+      <li class="specimen" data-reveal style="--i:3">
+        <div class="specimen__tile tile--ink"><img src="assets/img/cordial-glass.jpg" width="900" height="1200" alt="Cut glass cordial glass, Libbey Glass Company, 1904" loading="lazy"></div>
+        <h3 class="specimen__name">Retirement income</h3>
+        <p class="specimen__fact">Social Security timing, withdrawal order, Roth conversion windows and layered income for a retirement that may last thirty years.</p>
+      </li>
+      <li class="specimen" data-reveal style="--i:4">
+        <div class="specimen__tile tile--mint"><img src="assets/img/sherbet-glass.jpg" width="900" height="1200" alt="Cut glass sherbet glass, Libbey Glass Company, 1904" loading="lazy"></div>
+        <h3 class="specimen__name">Estate and legacy</h3>
+        <p class="specimen__fact">Beneficiaries, trusts, powers of attorney, healthcare directives and giving, coordinated so your wealth reaches the people you choose.</p>
+      </li>
+      <li class="specimen" data-reveal style="--i:5">
+        <div class="specimen__tile tile--surface"><img src="assets/img/wineglass-2.jpg" width="900" height="1200" alt="Cut glass wineglass with a slender stem, Libbey Glass Company, 1904" loading="lazy"></div>
+        <h3 class="specimen__name">Insurance and tax</h3>
+        <p class="specimen__fact">Life, disability, long-term care and liability cover reviewed alongside bracket management, so one event or one tax bill can’t undo years of work.</p>
+      </li>
+      <li class="specimen specimen--place" data-reveal style="--i:6">
+        <div class="specimen__tile tile--photo"><img src="assets/img/libbey-owens-ford-glass-plant-rossford-ohio.jpg" width="1800" height="1382" alt="Workers in the box shop of a plate glass plant in Rossford, Ohio, 1904" loading="lazy"></div>
+        <p class="specimen__name">Where it was made</p>
+        <p class="specimen__fact">The box shop of the Ford plate glass plant at Rossford, across the Maumee from Toledo, in 1904.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Process: many into one -->
+  <section class="process wrap" id="process" aria-labelledby="process-title">
+    <div class="process__top">
+      <div class="process__intro" data-reveal>
+        <h2 class="head" id="process-title">Built slowly, in four phases</h2>
+        <p>Glass that cools too fast cracks, so it is cooled for hours before it is finished. A plan rushed into place fails the same way. Every engagement moves through four phases, at your pace.</p>
+      </div>
+      <figure class="process__film" data-reveal>
+        <video poster="assets/video/glassblowing-poster.jpg" muted loop playsinline preload="none" width="854" height="480" aria-label="A glassblower forms a glowing gather of glass at the bench">
+          <source src="assets/video/glassblowing.webm" type="video/webm">
+          <source src="assets/video/glassblowing.mp4" type="video/mp4">
+        </video>
+        <figcaption class="small">Forming a gather at the bench. Glassblowing at the LWL Industrial Museum, Glashütte Gernheim.</figcaption>
+      </figure>
+    </div>
+    <div class="process__body">
+    <div class="process__diagram" aria-hidden="true">
+      <svg class="dia dia-wide" viewBox="0 0 1350 300" role="presentation" focusable="false"><rect x="6.0" y="259.4" width="12" height="12" fill="#8b97a6" style="--k:0;--dx:11px;--dy:24px"/><rect x="68.6" y="209.6" width="12" height="12" fill="#bcc4cf" style="--k:1;--dx:-28px;--dy:23px"/><rect x="104.0" y="215.5" width="12" height="12" fill="#bcc4cf" style="--k:2;--dx:22px;--dy:30px"/><rect x="167.5" y="198.0" width="12" height="12" fill="#bcc4cf" style="--k:3;--dx:27px;--dy:16px"/><rect x="249.0" y="82.9" width="12" height="12" fill="#8b97a6" style="--k:4;--dx:-5px;--dy:-15px"/><rect x="216.6" y="201.5" width="12" height="12" fill="#8b97a6" style="--k:5;--dx:14px;--dy:23px"/><rect x="209.5" y="141.7" width="12" height="12" fill="#bcc4cf" style="--k:6;--dx:-6px;--dy:-16px"/><rect x="246.2" y="51.9" width="12" height="12" fill="#bcc4cf" style="--k:7;--dx:-6px;--dy:23px"/><rect x="280.6" y="199.0" width="12" height="12" fill="#bcc4cf" style="--k:8;--dx:4px;--dy:-9px"/><rect x="177.8" y="257.1" width="12" height="12" fill="#bcc4cf" style="--k:9;--dx:7px;--dy:14px"/><rect x="116.7" y="107.2" width="12" height="12" fill="#bcc4cf" style="--k:10;--dx:-10px;--dy:14px"/><rect x="104.8" y="59.7" width="12" height="12" fill="#8b97a6" style="--k:11;--dx:-5px;--dy:-18px"/><rect x="133.5" y="96.7" width="12" height="12" fill="#bcc4cf" style="--k:12;--dx:-11px;--dy:29px"/><rect x="171.8" y="209.6" width="12" height="12" fill="#bcc4cf" style="--k:13;--dx:30px;--dy:8px"/><rect x="23.4" y="91.1" width="12" height="12" fill="#bcc4cf" style="--k:14;--dx:22px;--dy:25px"/><rect x="157.4" y="129.6" width="12" height="12" fill="#8b97a6" style="--k:15;--dx:-18px;--dy:9px"/><rect x="276.4" y="34.3" width="12" height="12" fill="#8b97a6" style="--k:16;--dx:-22px;--dy:0px"/><rect x="108.4" y="192.7" width="12" height="12" fill="#bcc4cf" style="--k:17;--dx:3px;--dy:16px"/><rect x="159.2" y="63.0" width="12" height="12" fill="#8b97a6" style="--k:18;--dx:27px;--dy:-1px"/><rect x="90.4" y="114.8" width="12" height="12" fill="#8b97a6" style="--k:19;--dx:-19px;--dy:-3px"/><rect x="104.9" y="158.2" width="12" height="12" fill="#bcc4cf" style="--k:20;--dx:-20px;--dy:10px"/><rect x="75.4" y="255.7" width="12" height="12" fill="#8b97a6" style="--k:21;--dx:1px;--dy:4px"/><rect x="262.7" y="185.1" width="12" height="12" fill="#bcc4cf" style="--k:22;--dx:0px;--dy:15px"/><rect x="159.6" y="151.3" width="12" height="12" fill="#bcc4cf" style="--k:23;--dx:-8px;--dy:15px"/><rect x="285.5" y="123.1" width="12" height="12" fill="#bcc4cf" style="--k:24;--dx:-28px;--dy:-12px"/><rect x="80.7" y="172.6" width="12" height="12" fill="#8b97a6" style="--k:25;--dx:3px;--dy:-18px"/><rect x="104.4" y="121.8" width="12" height="12" fill="#bcc4cf" style="--k:26;--dx:13px;--dy:-13px"/><rect x="267.1" y="48.9" width="12" height="12" fill="#bcc4cf" style="--k:27;--dx:-16px;--dy:10px"/><rect x="29.1" y="125.8" width="12" height="12" fill="#8b97a6" style="--k:28;--dx:-4px;--dy:-25px"/><rect x="29.2" y="279.0" width="12" height="12" fill="#8b97a6" style="--k:29;--dx:16px;--dy:19px"/><rect x="194.1" y="57.5" width="12" height="12" fill="#8b97a6" style="--k:30;--dx:25px;--dy:25px"/><rect x="182.4" y="55.8" width="12" height="12" fill="#bcc4cf" style="--k:31;--dx:11px;--dy:28px"/><rect x="269.2" y="251.5" width="12" height="12" fill="#bcc4cf" style="--k:32;--dx:-28px;--dy:16px"/><rect x="276.1" y="217.9" width="12" height="12" fill="#8b97a6" style="--k:33;--dx:6px;--dy:13px"/><rect x="9.1" y="84.6" width="12" height="12" fill="#8b97a6" style="--k:34;--dx:24px;--dy:-28px"/><rect x="6.5" y="180.4" width="12" height="12" fill="#8b97a6" style="--k:35;--dx:-22px;--dy:-25px"/><rect x="347.5" y="171.4" width="12" height="12" fill="#47546a" style="--k:36;--dx:-24px;--dy:-25px"/><rect x="376.5" y="126.4" width="12" height="12" fill="#47546a" style="--k:37;--dx:-29px;--dy:6px"/><rect x="405.5" y="149.6" width="12" height="12" fill="#47546a" style="--k:38;--dx:27px;--dy:-18px"/><rect x="434.5" y="104.9" width="12" height="12" fill="#47546a" style="--k:39;--dx:-22px;--dy:-18px"/><rect x="463.5" y="152.8" width="12" height="12" fill="#47546a" style="--k:40;--dx:10px;--dy:-15px"/><rect x="492.5" y="116.1" width="12" height="12" fill="#47546a" style="--k:41;--dx:-3px;--dy:30px"/><rect x="521.5" y="124.4" width="12" height="12" fill="#47546a" style="--k:42;--dx:-5px;--dy:10px"/><rect x="550.5" y="134.4" width="12" height="12" fill="#47546a" style="--k:43;--dx:16px;--dy:-6px"/><rect x="579.5" y="125.3" width="12" height="12" fill="#47546a" style="--k:44;--dx:-5px;--dy:-26px"/><rect x="608.5" y="128.0" width="12" height="12" fill="#47546a" style="--k:45;--dx:-16px;--dy:18px"/><rect x="637.5" y="128.0" width="12" height="12" fill="#47546a" style="--k:46;--dx:28px;--dy:-21px"/><rect x="347.5" y="218.3" width="12" height="12" fill="#47546a" style="--k:47;--dx:26px;--dy:1px"/><rect x="376.5" y="164.0" width="12" height="12" fill="#47546a" style="--k:48;--dx:-23px;--dy:-17px"/><rect x="405.5" y="192.6" width="12" height="12" fill="#47546a" style="--k:49;--dx:6px;--dy:-20px"/><rect x="434.5" y="101.8" width="12" height="12" fill="#47546a" style="--k:50;--dx:-25px;--dy:-14px"/><rect x="463.5" y="169.9" width="12" height="12" fill="#47546a" style="--k:51;--dx:9px;--dy:3px"/><rect x="492.5" y="130.0" width="12" height="12" fill="#47546a" style="--k:52;--dx:-1px;--dy:30px"/><rect x="521.5" y="157.5" width="12" height="12" fill="#47546a" style="--k:53;--dx:-25px;--dy:-5px"/><rect x="550.5" y="145.1" width="12" height="12" fill="#47546a" style="--k:54;--dx:-11px;--dy:-30px"/><rect x="579.5" y="145.3" width="12" height="12" fill="#47546a" style="--k:55;--dx:-30px;--dy:-5px"/><rect x="608.5" y="143.6" width="12" height="12" fill="#47546a" style="--k:56;--dx:-25px;--dy:-16px"/><rect x="637.5" y="144.0" width="12" height="12" fill="#47546a" style="--k:57;--dx:25px;--dy:17px"/><rect x="347.5" y="107.6" width="12" height="12" fill="#47546a" style="--k:58;--dx:16px;--dy:-4px"/><rect x="376.5" y="169.4" width="12" height="12" fill="#47546a" style="--k:59;--dx:21px;--dy:28px"/><rect x="405.5" y="108.4" width="12" height="12" fill="#47546a" style="--k:60;--dx:18px;--dy:10px"/><rect x="434.5" y="183.8" width="12" height="12" fill="#47546a" style="--k:61;--dx:4px;--dy:-9px"/><rect x="463.5" y="173.0" width="12" height="12" fill="#47546a" style="--k:62;--dx:-6px;--dy:0px"/><rect x="492.5" y="169.6" width="12" height="12" fill="#47546a" style="--k:63;--dx:0px;--dy:4px"/><rect x="521.5" y="159.9" width="12" height="12" fill="#47546a" style="--k:64;--dx:13px;--dy:10px"/><rect x="550.5" y="152.4" width="12" height="12" fill="#47546a" style="--k:65;--dx:8px;--dy:14px"/><rect x="579.5" y="157.2" width="12" height="12" fill="#47546a" style="--k:66;--dx:23px;--dy:21px"/><rect x="608.5" y="160.8" width="12" height="12" fill="#47546a" style="--k:67;--dx:29px;--dy:-4px"/><rect x="637.5" y="160.0" width="12" height="12" fill="#47546a" style="--k:68;--dx:-1px;--dy:27px"/><rect x="687.0" y="144.0" width="12" height="12" fill="#84e2c1" style="--k:69;--dx:29px;--dy:-9px"/><rect x="727.0" y="121.6" width="12" height="12" fill="#84e2c1" style="--k:70;--dx:-25px;--dy:-9px"/><rect x="767.0" y="99.2" width="12" height="12" fill="#84e2c1" style="--k:71;--dx:23px;--dy:13px"/><rect x="807.0" y="76.8" width="12" height="12" fill="#84e2c1" style="--k:72;--dx:14px;--dy:27px"/><rect x="847.0" y="54.4" width="12" height="12" fill="#84e2c1" style="--k:73;--dx:17px;--dy:-18px"/><rect x="887.0" y="46.0" width="12" height="12" fill="#84e2c1" style="--k:74;--dx:-16px;--dy:18px"/><rect x="927.0" y="46.0" width="12" height="12" fill="#84e2c1" style="--k:75;--dx:-24px;--dy:25px"/><rect x="967.0" y="46.0" width="12" height="12" fill="#84e2c1" style="--k:76;--dx:18px;--dy:8px"/><rect x="687.0" y="144.0" width="12" height="12" fill="#84e2c1" style="--k:77;--dx:13px;--dy:2px"/><rect x="727.0" y="130.3" width="12" height="12" fill="#84e2c1" style="--k:78;--dx:-3px;--dy:22px"/><rect x="767.0" y="116.6" width="12" height="12" fill="#84e2c1" style="--k:79;--dx:4px;--dy:22px"/><rect x="807.0" y="102.9" width="12" height="12" fill="#84e2c1" style="--k:80;--dx:-14px;--dy:11px"/><rect x="847.0" y="89.1" width="12" height="12" fill="#84e2c1" style="--k:81;--dx:-4px;--dy:-6px"/><rect x="887.0" y="84.0" width="12" height="12" fill="#84e2c1" style="--k:82;--dx:-19px;--dy:5px"/><rect x="927.0" y="84.0" width="12" height="12" fill="#84e2c1" style="--k:83;--dx:-16px;--dy:24px"/><rect x="967.0" y="84.0" width="12" height="12" fill="#84e2c1" style="--k:84;--dx:19px;--dy:-10px"/><rect x="687.0" y="144.0" width="12" height="12" fill="#84e2c1" style="--k:85;--dx:11px;--dy:23px"/><rect x="727.0" y="139.0" width="12" height="12" fill="#84e2c1" style="--k:86;--dx:-23px;--dy:-12px"/><rect x="767.0" y="133.9" width="12" height="12" fill="#84e2c1" style="--k:87;--dx:25px;--dy:-30px"/><rect x="807.0" y="128.9" width="12" height="12" fill="#84e2c1" style="--k:88;--dx:-22px;--dy:-6px"/><rect x="847.0" y="123.9" width="12" height="12" fill="#84e2c1" style="--k:89;--dx:-29px;--dy:12px"/><rect x="887.0" y="122.0" width="12" height="12" fill="#84e2c1" style="--k:90;--dx:24px;--dy:-20px"/><rect x="927.0" y="122.0" width="12" height="12" fill="#84e2c1" style="--k:91;--dx:-17px;--dy:27px"/><rect x="967.0" y="122.0" width="12" height="12" fill="#84e2c1" style="--k:92;--dx:12px;--dy:-19px"/><rect x="687.0" y="144.0" width="12" height="12" fill="#84e2c1" style="--k:93;--dx:-23px;--dy:8px"/><rect x="727.0" y="147.7" width="12" height="12" fill="#84e2c1" style="--k:94;--dx:-29px;--dy:19px"/><rect x="767.0" y="151.3" width="12" height="12" fill="#84e2c1" style="--k:95;--dx:5px;--dy:15px"/><rect x="807.0" y="155.0" width="12" height="12" fill="#84e2c1" style="--k:96;--dx:-22px;--dy:-10px"/><rect x="847.0" y="158.6" width="12" height="12" fill="#84e2c1" style="--k:97;--dx:13px;--dy:27px"/><rect x="887.0" y="160.0" width="12" height="12" fill="#84e2c1" style="--k:98;--dx:3px;--dy:5px"/><rect x="927.0" y="160.0" width="12" height="12" fill="#84e2c1" style="--k:99;--dx:17px;--dy:12px"/><rect x="967.0" y="160.0" width="12" height="12" fill="#84e2c1" style="--k:100;--dx:14px;--dy:6px"/><rect x="687.0" y="144.0" width="12" height="12" fill="#84e2c1" style="--k:101;--dx:-24px;--dy:-27px"/><rect x="727.0" y="156.3" width="12" height="12" fill="#84e2c1" style="--k:102;--dx:7px;--dy:-17px"/><rect x="767.0" y="168.7" width="12" height="12" fill="#84e2c1" style="--k:103;--dx:5px;--dy:-15px"/><rect x="807.0" y="181.0" width="12" height="12" fill="#84e2c1" style="--k:104;--dx:-17px;--dy:7px"/><rect x="847.0" y="193.4" width="12" height="12" fill="#84e2c1" style="--k:105;--dx:8px;--dy:19px"/><rect x="887.0" y="198.0" width="12" height="12" fill="#84e2c1" style="--k:106;--dx:-16px;--dy:24px"/><rect x="927.0" y="198.0" width="12" height="12" fill="#84e2c1" style="--k:107;--dx:-27px;--dy:11px"/><rect x="967.0" y="198.0" width="12" height="12" fill="#84e2c1" style="--k:108;--dx:-6px;--dy:18px"/><rect x="687.0" y="144.0" width="12" height="12" fill="#84e2c1" style="--k:109;--dx:10px;--dy:18px"/><rect x="727.0" y="165.0" width="12" height="12" fill="#84e2c1" style="--k:110;--dx:-24px;--dy:25px"/><rect x="767.0" y="186.1" width="12" height="12" fill="#84e2c1" style="--k:111;--dx:0px;--dy:19px"/><rect x="807.0" y="207.1" width="12" height="12" fill="#84e2c1" style="--k:112;--dx:-5px;--dy:22px"/><rect x="847.0" y="228.1" width="12" height="12" fill="#84e2c1" style="--k:113;--dx:17px;--dy:14px"/><rect x="887.0" y="236.0" width="12" height="12" fill="#84e2c1" style="--k:114;--dx:24px;--dy:21px"/><rect x="927.0" y="236.0" width="12" height="12" fill="#84e2c1" style="--k:115;--dx:-19px;--dy:13px"/><rect x="967.0" y="236.0" width="12" height="12" fill="#84e2c1" style="--k:116;--dx:-21px;--dy:-22px"/><rect x="1024.5" y="46.0" width="12" height="12" fill="#0d1b2e" style="--k:117;--dx:27px;--dy:27px"/><rect x="1064.5" y="46.0" width="12" height="12" fill="#0d1b2e" style="--k:118;--dx:-27px;--dy:-25px"/><rect x="1104.5" y="46.0" width="12" height="12" fill="#0d1b2e" style="--k:119;--dx:-14px;--dy:26px"/><rect x="1144.5" y="46.0" width="12" height="12" fill="#0d1b2e" style="--k:120;--dx:22px;--dy:27px"/><rect x="1184.5" y="46.0" width="12" height="12" fill="#0d1b2e" style="--k:121;--dx:-13px;--dy:-18px"/><rect x="1224.5" y="46.0" width="12" height="12" fill="#0d1b2e" style="--k:122;--dx:-28px;--dy:-2px"/><rect x="1264.5" y="46.0" width="12" height="12" fill="#0d1b2e" style="--k:123;--dx:4px;--dy:-22px"/><rect x="1304.5" y="46.0" width="12" height="12" fill="#0d1b2e" style="--k:124;--dx:-11px;--dy:-1px"/><rect x="1024.5" y="84.0" width="12" height="12" fill="#0d1b2e" style="--k:125;--dx:-16px;--dy:-27px"/><rect x="1064.5" y="84.0" width="12" height="12" fill="#0d1b2e" style="--k:126;--dx:-27px;--dy:-24px"/><rect x="1104.5" y="84.0" width="12" height="12" fill="#0d1b2e" style="--k:127;--dx:8px;--dy:-2px"/><rect x="1144.5" y="84.0" width="12" height="12" fill="#0d1b2e" style="--k:128;--dx:18px;--dy:14px"/><rect x="1184.5" y="84.0" width="12" height="12" fill="#0d1b2e" style="--k:129;--dx:1px;--dy:12px"/><rect x="1224.5" y="84.0" width="12" height="12" fill="#0d1b2e" style="--k:130;--dx:-7px;--dy:7px"/><rect x="1264.5" y="84.0" width="12" height="12" fill="#0d1b2e" style="--k:131;--dx:28px;--dy:16px"/><rect x="1304.5" y="84.0" width="12" height="12" fill="#0d1b2e" style="--k:132;--dx:28px;--dy:13px"/><rect x="1024.5" y="122.0" width="12" height="12" fill="#0d1b2e" style="--k:133;--dx:6px;--dy:18px"/><rect x="1064.5" y="122.0" width="12" height="12" fill="#0d1b2e" style="--k:134;--dx:-20px;--dy:-26px"/><rect x="1104.5" y="122.0" width="12" height="12" fill="#0d1b2e" style="--k:135;--dx:14px;--dy:9px"/><rect x="1144.5" y="122.0" width="12" height="12" fill="#0d1b2e" style="--k:136;--dx:-4px;--dy:3px"/><rect x="1184.5" y="122.0" width="12" height="12" fill="#0d1b2e" style="--k:137;--dx:-7px;--dy:0px"/><rect x="1224.5" y="122.0" width="12" height="12" fill="#0d1b2e" style="--k:138;--dx:-23px;--dy:-26px"/><rect x="1264.5" y="122.0" width="12" height="12" fill="#0d1b2e" style="--k:139;--dx:-25px;--dy:-9px"/><rect x="1304.5" y="122.0" width="12" height="12" fill="#0d1b2e" style="--k:140;--dx:-9px;--dy:-18px"/><rect x="1024.5" y="160.0" width="12" height="12" fill="#0d1b2e" style="--k:141;--dx:8px;--dy:-22px"/><rect x="1064.5" y="160.0" width="12" height="12" fill="#0d1b2e" style="--k:142;--dx:-27px;--dy:-30px"/><rect x="1104.5" y="160.0" width="12" height="12" fill="#0d1b2e" style="--k:143;--dx:20px;--dy:22px"/><rect x="1144.5" y="160.0" width="12" height="12" fill="#0d1b2e" style="--k:144;--dx:-27px;--dy:16px"/><rect x="1184.5" y="160.0" width="12" height="12" fill="#0d1b2e" style="--k:145;--dx:-11px;--dy:-6px"/><rect x="1224.5" y="160.0" width="12" height="12" fill="#0d1b2e" style="--k:146;--dx:24px;--dy:18px"/><rect x="1264.5" y="160.0" width="12" height="12" fill="#0d1b2e" style="--k:147;--dx:-29px;--dy:30px"/><rect x="1304.5" y="160.0" width="12" height="12" fill="#0d1b2e" style="--k:148;--dx:-18px;--dy:9px"/><rect x="1024.5" y="198.0" width="12" height="12" fill="#0d1b2e" style="--k:149;--dx:-4px;--dy:-28px"/><rect x="1064.5" y="198.0" width="12" height="12" fill="#0d1b2e" style="--k:150;--dx:-20px;--dy:15px"/><rect x="1104.5" y="198.0" width="12" height="12" fill="#0d1b2e" style="--k:151;--dx:15px;--dy:-15px"/><rect x="1144.5" y="198.0" width="12" height="12" fill="#0d1b2e" style="--k:152;--dx:21px;--dy:19px"/><rect x="1184.5" y="198.0" width="12" height="12" fill="#0d1b2e" style="--k:153;--dx:-11px;--dy:-2px"/><rect x="1224.5" y="198.0" width="12" height="12" fill="#0d1b2e" style="--k:154;--dx:-12px;--dy:-15px"/><rect x="1264.5" y="198.0" width="12" height="12" fill="#0d1b2e" style="--k:155;--dx:23px;--dy:22px"/><rect x="1304.5" y="198.0" width="12" height="12" fill="#0d1b2e" style="--k:156;--dx:11px;--dy:0px"/><rect x="1024.5" y="236.0" width="12" height="12" fill="#0d1b2e" style="--k:157;--dx:22px;--dy:19px"/><rect x="1064.5" y="236.0" width="12" height="12" fill="#0d1b2e" style="--k:158;--dx:19px;--dy:16px"/><rect x="1104.5" y="236.0" width="12" height="12" fill="#0d1b2e" style="--k:159;--dx:28px;--dy:11px"/><rect x="1144.5" y="236.0" width="12" height="12" fill="#0d1b2e" style="--k:160;--dx:-13px;--dy:13px"/><rect x="1184.5" y="236.0" width="12" height="12" fill="#0d1b2e" style="--k:161;--dx:-11px;--dy:22px"/><rect x="1224.5" y="236.0" width="12" height="12" fill="#0d1b2e" style="--k:162;--dx:-20px;--dy:21px"/><rect x="1264.5" y="236.0" width="12" height="12" fill="#0d1b2e" style="--k:163;--dx:10px;--dy:19px"/><rect x="1304.5" y="236.0" width="12" height="12" fill="#0d1b2e" style="--k:164;--dx:-2px;--dy:18px"/></svg>
+      <svg class="dia dia-tall" viewBox="0 0 300 1350" preserveAspectRatio="xMidYMin meet" role="presentation" focusable="false"><rect x="259.4" y="6.0" width="12" height="12" fill="#8b97a6" style="--k:0;--dx:20px;--dy:-27px"/><rect x="209.6" y="68.6" width="12" height="12" fill="#bcc4cf" style="--k:1;--dx:-16px;--dy:-18px"/><rect x="215.5" y="104.0" width="12" height="12" fill="#bcc4cf" style="--k:2;--dx:-29px;--dy:5px"/><rect x="198.0" y="167.5" width="12" height="12" fill="#bcc4cf" style="--k:3;--dx:19px;--dy:8px"/><rect x="82.9" y="249.0" width="12" height="12" fill="#8b97a6" style="--k:4;--dx:21px;--dy:22px"/><rect x="201.5" y="216.6" width="12" height="12" fill="#8b97a6" style="--k:5;--dx:19px;--dy:-18px"/><rect x="141.7" y="209.5" width="12" height="12" fill="#bcc4cf" style="--k:6;--dx:4px;--dy:-2px"/><rect x="51.9" y="246.2" width="12" height="12" fill="#bcc4cf" style="--k:7;--dx:-7px;--dy:2px"/><rect x="199.0" y="280.6" width="12" height="12" fill="#bcc4cf" style="--k:8;--dx:15px;--dy:1px"/><rect x="257.1" y="177.8" width="12" height="12" fill="#bcc4cf" style="--k:9;--dx:-7px;--dy:0px"/><rect x="107.2" y="116.7" width="12" height="12" fill="#bcc4cf" style="--k:10;--dx:-15px;--dy:12px"/><rect x="59.7" y="104.8" width="12" height="12" fill="#8b97a6" style="--k:11;--dx:16px;--dy:-12px"/><rect x="96.7" y="133.5" width="12" height="12" fill="#bcc4cf" style="--k:12;--dx:-15px;--dy:7px"/><rect x="209.6" y="171.8" width="12" height="12" fill="#bcc4cf" style="--k:13;--dx:3px;--dy:26px"/><rect x="91.1" y="23.4" width="12" height="12" fill="#bcc4cf" style="--k:14;--dx:4px;--dy:-11px"/><rect x="129.6" y="157.4" width="12" height="12" fill="#8b97a6" style="--k:15;--dx:6px;--dy:4px"/><rect x="34.3" y="276.4" width="12" height="12" fill="#8b97a6" style="--k:16;--dx:8px;--dy:4px"/><rect x="192.7" y="108.4" width="12" height="12" fill="#bcc4cf" style="--k:17;--dx:-20px;--dy:-17px"/><rect x="63.0" y="159.2" width="12" height="12" fill="#8b97a6" style="--k:18;--dx:-23px;--dy:-10px"/><rect x="114.8" y="90.4" width="12" height="12" fill="#8b97a6" style="--k:19;--dx:8px;--dy:22px"/><rect x="158.2" y="104.9" width="12" height="12" fill="#bcc4cf" style="--k:20;--dx:9px;--dy:-7px"/><rect x="255.7" y="75.4" width="12" height="12" fill="#8b97a6" style="--k:21;--dx:-9px;--dy:-6px"/><rect x="185.1" y="262.7" width="12" height="12" fill="#bcc4cf" style="--k:22;--dx:-22px;--dy:-21px"/><rect x="151.3" y="159.6" width="12" height="12" fill="#bcc4cf" style="--k:23;--dx:-27px;--dy:-1px"/><rect x="123.1" y="285.5" width="12" height="12" fill="#bcc4cf" style="--k:24;--dx:-7px;--dy:-25px"/><rect x="172.6" y="80.7" width="12" height="12" fill="#8b97a6" style="--k:25;--dx:8px;--dy:-6px"/><rect x="121.8" y="104.4" width="12" height="12" fill="#bcc4cf" style="--k:26;--dx:-3px;--dy:-24px"/><rect x="48.9" y="267.1" width="12" height="12" fill="#bcc4cf" style="--k:27;--dx:20px;--dy:-14px"/><rect x="125.8" y="29.1" width="12" height="12" fill="#8b97a6" style="--k:28;--dx:-12px;--dy:-23px"/><rect x="279.0" y="29.2" width="12" height="12" fill="#8b97a6" style="--k:29;--dx:-18px;--dy:-4px"/><rect x="57.5" y="194.1" width="12" height="12" fill="#8b97a6" style="--k:30;--dx:-18px;--dy:6px"/><rect x="55.8" y="182.4" width="12" height="12" fill="#bcc4cf" style="--k:31;--dx:5px;--dy:15px"/><rect x="251.5" y="269.2" width="12" height="12" fill="#bcc4cf" style="--k:32;--dx:17px;--dy:0px"/><rect x="217.9" y="276.1" width="12" height="12" fill="#8b97a6" style="--k:33;--dx:22px;--dy:11px"/><rect x="84.6" y="9.1" width="12" height="12" fill="#8b97a6" style="--k:34;--dx:-23px;--dy:7px"/><rect x="180.4" y="6.5" width="12" height="12" fill="#8b97a6" style="--k:35;--dx:14px;--dy:23px"/><rect x="171.4" y="347.5" width="12" height="12" fill="#47546a" style="--k:36;--dx:5px;--dy:28px"/><rect x="126.4" y="376.5" width="12" height="12" fill="#47546a" style="--k:37;--dx:-13px;--dy:30px"/><rect x="149.6" y="405.5" width="12" height="12" fill="#47546a" style="--k:38;--dx:-28px;--dy:-24px"/><rect x="104.9" y="434.5" width="12" height="12" fill="#47546a" style="--k:39;--dx:-12px;--dy:21px"/><rect x="152.8" y="463.5" width="12" height="12" fill="#47546a" style="--k:40;--dx:24px;--dy:13px"/><rect x="116.1" y="492.5" width="12" height="12" fill="#47546a" style="--k:41;--dx:3px;--dy:-16px"/><rect x="124.4" y="521.5" width="12" height="12" fill="#47546a" style="--k:42;--dx:2px;--dy:17px"/><rect x="134.4" y="550.5" width="12" height="12" fill="#47546a" style="--k:43;--dx:-19px;--dy:19px"/><rect x="125.3" y="579.5" width="12" height="12" fill="#47546a" style="--k:44;--dx:11px;--dy:5px"/><rect x="128.0" y="608.5" width="12" height="12" fill="#47546a" style="--k:45;--dx:27px;--dy:-12px"/><rect x="128.0" y="637.5" width="12" height="12" fill="#47546a" style="--k:46;--dx:-28px;--dy:14px"/><rect x="218.3" y="347.5" width="12" height="12" fill="#47546a" style="--k:47;--dx:1px;--dy:7px"/><rect x="164.0" y="376.5" width="12" height="12" fill="#47546a" style="--k:48;--dx:12px;--dy:11px"/><rect x="192.6" y="405.5" width="12" height="12" fill="#47546a" style="--k:49;--dx:-27px;--dy:12px"/><rect x="101.8" y="434.5" width="12" height="12" fill="#47546a" style="--k:50;--dx:29px;--dy:21px"/><rect x="169.9" y="463.5" width="12" height="12" fill="#47546a" style="--k:51;--dx:11px;--dy:4px"/><rect x="130.0" y="492.5" width="12" height="12" fill="#47546a" style="--k:52;--dx:-17px;--dy:8px"/><rect x="157.5" y="521.5" width="12" height="12" fill="#47546a" style="--k:53;--dx:4px;--dy:-4px"/><rect x="145.1" y="550.5" width="12" height="12" fill="#47546a" style="--k:54;--dx:-29px;--dy:22px"/><rect x="145.3" y="579.5" width="12" height="12" fill="#47546a" style="--k:55;--dx:9px;--dy:29px"/><rect x="143.6" y="608.5" width="12" height="12" fill="#47546a" style="--k:56;--dx:-12px;--dy:15px"/><rect x="144.0" y="637.5" width="12" height="12" fill="#47546a" style="--k:57;--dx:26px;--dy:4px"/><rect x="107.6" y="347.5" width="12" height="12" fill="#47546a" style="--k:58;--dx:7px;--dy:-18px"/><rect x="169.4" y="376.5" width="12" height="12" fill="#47546a" style="--k:59;--dx:-15px;--dy:-3px"/><rect x="108.4" y="405.5" width="12" height="12" fill="#47546a" style="--k:60;--dx:-4px;--dy:-27px"/><rect x="183.8" y="434.5" width="12" height="12" fill="#47546a" style="--k:61;--dx:4px;--dy:17px"/><rect x="173.0" y="463.5" width="12" height="12" fill="#47546a" style="--k:62;--dx:20px;--dy:-25px"/><rect x="169.6" y="492.5" width="12" height="12" fill="#47546a" style="--k:63;--dx:-12px;--dy:7px"/><rect x="159.9" y="521.5" width="12" height="12" fill="#47546a" style="--k:64;--dx:-5px;--dy:-11px"/><rect x="152.4" y="550.5" width="12" height="12" fill="#47546a" style="--k:65;--dx:-13px;--dy:-26px"/><rect x="157.2" y="579.5" width="12" height="12" fill="#47546a" style="--k:66;--dx:-8px;--dy:-4px"/><rect x="160.8" y="608.5" width="12" height="12" fill="#47546a" style="--k:67;--dx:8px;--dy:0px"/><rect x="160.0" y="637.5" width="12" height="12" fill="#47546a" style="--k:68;--dx:3px;--dy:-4px"/><rect x="144.0" y="687.0" width="12" height="12" fill="#84e2c1" style="--k:69;--dx:7px;--dy:24px"/><rect x="121.6" y="727.0" width="12" height="12" fill="#84e2c1" style="--k:70;--dx:27px;--dy:-2px"/><rect x="99.2" y="767.0" width="12" height="12" fill="#84e2c1" style="--k:71;--dx:20px;--dy:29px"/><rect x="76.8" y="807.0" width="12" height="12" fill="#84e2c1" style="--k:72;--dx:9px;--dy:-6px"/><rect x="54.4" y="847.0" width="12" height="12" fill="#84e2c1" style="--k:73;--dx:8px;--dy:-27px"/><rect x="46.0" y="887.0" width="12" height="12" fill="#84e2c1" style="--k:74;--dx:-13px;--dy:-28px"/><rect x="46.0" y="927.0" width="12" height="12" fill="#84e2c1" style="--k:75;--dx:20px;--dy:-23px"/><rect x="46.0" y="967.0" width="12" height="12" fill="#84e2c1" style="--k:76;--dx:-16px;--dy:10px"/><rect x="144.0" y="687.0" width="12" height="12" fill="#84e2c1" style="--k:77;--dx:-17px;--dy:-14px"/><rect x="130.3" y="727.0" width="12" height="12" fill="#84e2c1" style="--k:78;--dx:-22px;--dy:16px"/><rect x="116.6" y="767.0" width="12" height="12" fill="#84e2c1" style="--k:79;--dx:-12px;--dy:7px"/><rect x="102.9" y="807.0" width="12" height="12" fill="#84e2c1" style="--k:80;--dx:15px;--dy:-29px"/><rect x="89.1" y="847.0" width="12" height="12" fill="#84e2c1" style="--k:81;--dx:20px;--dy:25px"/><rect x="84.0" y="887.0" width="12" height="12" fill="#84e2c1" style="--k:82;--dx:16px;--dy:27px"/><rect x="84.0" y="927.0" width="12" height="12" fill="#84e2c1" style="--k:83;--dx:-26px;--dy:-19px"/><rect x="84.0" y="967.0" width="12" height="12" fill="#84e2c1" style="--k:84;--dx:-28px;--dy:29px"/><rect x="144.0" y="687.0" width="12" height="12" fill="#84e2c1" style="--k:85;--dx:-1px;--dy:-13px"/><rect x="139.0" y="727.0" width="12" height="12" fill="#84e2c1" style="--k:86;--dx:1px;--dy:20px"/><rect x="133.9" y="767.0" width="12" height="12" fill="#84e2c1" style="--k:87;--dx:12px;--dy:17px"/><rect x="128.9" y="807.0" width="12" height="12" fill="#84e2c1" style="--k:88;--dx:-29px;--dy:-23px"/><rect x="123.9" y="847.0" width="12" height="12" fill="#84e2c1" style="--k:89;--dx:7px;--dy:15px"/><rect x="122.0" y="887.0" width="12" height="12" fill="#84e2c1" style="--k:90;--dx:-25px;--dy:-13px"/><rect x="122.0" y="927.0" width="12" height="12" fill="#84e2c1" style="--k:91;--dx:-6px;--dy:16px"/><rect x="122.0" y="967.0" width="12" height="12" fill="#84e2c1" style="--k:92;--dx:11px;--dy:8px"/><rect x="144.0" y="687.0" width="12" height="12" fill="#84e2c1" style="--k:93;--dx:-21px;--dy:26px"/><rect x="147.7" y="727.0" width="12" height="12" fill="#84e2c1" style="--k:94;--dx:30px;--dy:7px"/><rect x="151.3" y="767.0" width="12" height="12" fill="#84e2c1" style="--k:95;--dx:13px;--dy:-20px"/><rect x="155.0" y="807.0" width="12" height="12" fill="#84e2c1" style="--k:96;--dx:23px;--dy:-20px"/><rect x="158.6" y="847.0" width="12" height="12" fill="#84e2c1" style="--k:97;--dx:-9px;--dy:12px"/><rect x="160.0" y="887.0" width="12" height="12" fill="#84e2c1" style="--k:98;--dx:-5px;--dy:-2px"/><rect x="160.0" y="927.0" width="12" height="12" fill="#84e2c1" style="--k:99;--dx:29px;--dy:-3px"/><rect x="160.0" y="967.0" width="12" height="12" fill="#84e2c1" style="--k:100;--dx:3px;--dy:10px"/><rect x="144.0" y="687.0" width="12" height="12" fill="#84e2c1" style="--k:101;--dx:-24px;--dy:-20px"/><rect x="156.3" y="727.0" width="12" height="12" fill="#84e2c1" style="--k:102;--dx:-19px;--dy:20px"/><rect x="168.7" y="767.0" width="12" height="12" fill="#84e2c1" style="--k:103;--dx:-10px;--dy:30px"/><rect x="181.0" y="807.0" width="12" height="12" fill="#84e2c1" style="--k:104;--dx:2px;--dy:-22px"/><rect x="193.4" y="847.0" width="12" height="12" fill="#84e2c1" style="--k:105;--dx:-1px;--dy:0px"/><rect x="198.0" y="887.0" width="12" height="12" fill="#84e2c1" style="--k:106;--dx:-29px;--dy:3px"/><rect x="198.0" y="927.0" width="12" height="12" fill="#84e2c1" style="--k:107;--dx:19px;--dy:-4px"/><rect x="198.0" y="967.0" width="12" height="12" fill="#84e2c1" style="--k:108;--dx:-17px;--dy:-26px"/><rect x="144.0" y="687.0" width="12" height="12" fill="#84e2c1" style="--k:109;--dx:8px;--dy:-4px"/><rect x="165.0" y="727.0" width="12" height="12" fill="#84e2c1" style="--k:110;--dx:-22px;--dy:20px"/><rect x="186.1" y="767.0" width="12" height="12" fill="#84e2c1" style="--k:111;--dx:-29px;--dy:25px"/><rect x="207.1" y="807.0" width="12" height="12" fill="#84e2c1" style="--k:112;--dx:13px;--dy:23px"/><rect x="228.1" y="847.0" width="12" height="12" fill="#84e2c1" style="--k:113;--dx:10px;--dy:11px"/><rect x="236.0" y="887.0" width="12" height="12" fill="#84e2c1" style="--k:114;--dx:20px;--dy:-13px"/><rect x="236.0" y="927.0" width="12" height="12" fill="#84e2c1" style="--k:115;--dx:11px;--dy:-2px"/><rect x="236.0" y="967.0" width="12" height="12" fill="#84e2c1" style="--k:116;--dx:-30px;--dy:-23px"/><rect x="46.0" y="1024.5" width="12" height="12" fill="#0d1b2e" style="--k:117;--dx:-25px;--dy:-26px"/><rect x="46.0" y="1064.5" width="12" height="12" fill="#0d1b2e" style="--k:118;--dx:1px;--dy:-23px"/><rect x="46.0" y="1104.5" width="12" height="12" fill="#0d1b2e" style="--k:119;--dx:-17px;--dy:-8px"/><rect x="46.0" y="1144.5" width="12" height="12" fill="#0d1b2e" style="--k:120;--dx:9px;--dy:-15px"/><rect x="46.0" y="1184.5" width="12" height="12" fill="#0d1b2e" style="--k:121;--dx:-15px;--dy:13px"/><rect x="46.0" y="1224.5" width="12" height="12" fill="#0d1b2e" style="--k:122;--dx:15px;--dy:11px"/><rect x="46.0" y="1264.5" width="12" height="12" fill="#0d1b2e" style="--k:123;--dx:22px;--dy:-19px"/><rect x="46.0" y="1304.5" width="12" height="12" fill="#0d1b2e" style="--k:124;--dx:-13px;--dy:3px"/><rect x="84.0" y="1024.5" width="12" height="12" fill="#0d1b2e" style="--k:125;--dx:-6px;--dy:6px"/><rect x="84.0" y="1064.5" width="12" height="12" fill="#0d1b2e" style="--k:126;--dx:-6px;--dy:3px"/><rect x="84.0" y="1104.5" width="12" height="12" fill="#0d1b2e" style="--k:127;--dx:23px;--dy:21px"/><rect x="84.0" y="1144.5" width="12" height="12" fill="#0d1b2e" style="--k:128;--dx:-6px;--dy:-8px"/><rect x="84.0" y="1184.5" width="12" height="12" fill="#0d1b2e" style="--k:129;--dx:28px;--dy:14px"/><rect x="84.0" y="1224.5" width="12" height="12" fill="#0d1b2e" style="--k:130;--dx:26px;--dy:-16px"/><rect x="84.0" y="1264.5" width="12" height="12" fill="#0d1b2e" style="--k:131;--dx:28px;--dy:25px"/><rect x="84.0" y="1304.5" width="12" height="12" fill="#0d1b2e" style="--k:132;--dx:13px;--dy:4px"/><rect x="122.0" y="1024.5" width="12" height="12" fill="#0d1b2e" style="--k:133;--dx:9px;--dy:24px"/><rect x="122.0" y="1064.5" width="12" height="12" fill="#0d1b2e" style="--k:134;--dx:-19px;--dy:-1px"/><rect x="122.0" y="1104.5" width="12" height="12" fill="#0d1b2e" style="--k:135;--dx:-3px;--dy:16px"/><rect x="122.0" y="1144.5" width="12" height="12" fill="#0d1b2e" style="--k:136;--dx:15px;--dy:12px"/><rect x="122.0" y="1184.5" width="12" height="12" fill="#0d1b2e" style="--k:137;--dx:7px;--dy:-30px"/><rect x="122.0" y="1224.5" width="12" height="12" fill="#0d1b2e" style="--k:138;--dx:-12px;--dy:16px"/><rect x="122.0" y="1264.5" width="12" height="12" fill="#0d1b2e" style="--k:139;--dx:4px;--dy:-28px"/><rect x="122.0" y="1304.5" width="12" height="12" fill="#0d1b2e" style="--k:140;--dx:3px;--dy:26px"/><rect x="160.0" y="1024.5" width="12" height="12" fill="#0d1b2e" style="--k:141;--dx:-29px;--dy:27px"/><rect x="160.0" y="1064.5" width="12" height="12" fill="#0d1b2e" style="--k:142;--dx:10px;--dy:3px"/><rect x="160.0" y="1104.5" width="12" height="12" fill="#0d1b2e" style="--k:143;--dx:22px;--dy:25px"/><rect x="160.0" y="1144.5" width="12" height="12" fill="#0d1b2e" style="--k:144;--dx:25px;--dy:-27px"/><rect x="160.0" y="1184.5" width="12" height="12" fill="#0d1b2e" style="--k:145;--dx:15px;--dy:-8px"/><rect x="160.0" y="1224.5" width="12" height="12" fill="#0d1b2e" style="--k:146;--dx:12px;--dy:-25px"/><rect x="160.0" y="1264.5" width="12" height="12" fill="#0d1b2e" style="--k:147;--dx:-5px;--dy:-25px"/><rect x="160.0" y="1304.5" width="12" height="12" fill="#0d1b2e" style="--k:148;--dx:-12px;--dy:-8px"/><rect x="198.0" y="1024.5" width="12" height="12" fill="#0d1b2e" style="--k:149;--dx:-11px;--dy:-7px"/><rect x="198.0" y="1064.5" width="12" height="12" fill="#0d1b2e" style="--k:150;--dx:-29px;--dy:-6px"/><rect x="198.0" y="1104.5" width="12" height="12" fill="#0d1b2e" style="--k:151;--dx:-5px;--dy:18px"/><rect x="198.0" y="1144.5" width="12" height="12" fill="#0d1b2e" style="--k:152;--dx:19px;--dy:-27px"/><rect x="198.0" y="1184.5" width="12" height="12" fill="#0d1b2e" style="--k:153;--dx:-3px;--dy:4px"/><rect x="198.0" y="1224.5" width="12" height="12" fill="#0d1b2e" style="--k:154;--dx:8px;--dy:-22px"/><rect x="198.0" y="1264.5" width="12" height="12" fill="#0d1b2e" style="--k:155;--dx:-23px;--dy:-6px"/><rect x="198.0" y="1304.5" width="12" height="12" fill="#0d1b2e" style="--k:156;--dx:-27px;--dy:-13px"/><rect x="236.0" y="1024.5" width="12" height="12" fill="#0d1b2e" style="--k:157;--dx:10px;--dy:-19px"/><rect x="236.0" y="1064.5" width="12" height="12" fill="#0d1b2e" style="--k:158;--dx:28px;--dy:23px"/><rect x="236.0" y="1104.5" width="12" height="12" fill="#0d1b2e" style="--k:159;--dx:4px;--dy:-21px"/><rect x="236.0" y="1144.5" width="12" height="12" fill="#0d1b2e" style="--k:160;--dx:-5px;--dy:12px"/><rect x="236.0" y="1184.5" width="12" height="12" fill="#0d1b2e" style="--k:161;--dx:-13px;--dy:-4px"/><rect x="236.0" y="1224.5" width="12" height="12" fill="#0d1b2e" style="--k:162;--dx:-11px;--dy:-7px"/><rect x="236.0" y="1264.5" width="12" height="12" fill="#0d1b2e" style="--k:163;--dx:-18px;--dy:-30px"/><rect x="236.0" y="1304.5" width="12" height="12" fill="#0d1b2e" style="--k:164;--dx:-17px;--dy:7px"/></svg>
+    </div>
+    <ol class="phases">
+      <li data-reveal style="--i:0"><h3>Discovery</h3><p>We start by listening: your goals, your values, your whole financial picture, and what wealth means to you.</p></li>
+      <li data-reveal style="--i:1"><h3>Analysis</h3><p>Every account, policy and document is gathered and measured, so we can see where you stand, the gaps and the risks.</p></li>
+      <li data-reveal style="--i:2"><h3>Strategy</h3><p>One written plan that connects investments, taxes, insurance, retirement income and estate, in the order that matters.</p></li>
+      <li data-reveal style="--i:3"><h3>Partnership</h3><p>Then the long part: regular reviews, rebalancing and changes as your life, the markets and the law move.</p></li>
+    </ol>
+    </div>
+  </section>
+
+  <!-- About: inset panel, shaped portrait -->
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="about__panel">
+      <div class="about__left">
+        <h2 class="head" id="about-title" data-reveal>He set out to be an architect</h2>
+        <figure class="about__portrait shutter" data-reveal>
+          <img src="assets/img/matthew-pindoley.jpg" width="1200" height="1800" alt="Matthew Pindoley in a navy suit, standing by a window">
+        </figure>
+      </div>
+      <div class="about__right">
+        <blockquote class="about__quote" data-reveal>
+          <p>“The most meaningful things in life are built slowly.”</p>
+        </blockquote>
+        <div class="about__block" data-reveal>
+          <h3>Why this work</h3>
+          <p>Matt wanted to be an architect, then considered law, drawn both times to building something that lasts and being useful to people. A Finance degree from the University of Toledo gave those instincts a foundation. He has seen too many families struggle to find an advisor with both the integrity and the expertise to guide them well; that is the standard he holds himself to.</p>
+        </div>
+        <div class="about__block" data-reveal>
+          <h3>What it is for</h3>
+          <p>Faith is central to who Matt is. A practicing Catholic and an active member of the Toledo community, he sees wealth as an alignment between your resources, your values and the life you are called to build.</p>
+        </div>
+        <ul class="about__creds" data-reveal>
+          <li>SE-AWMA®, Sports &amp; Entertainment Accredited Wealth Management Advisor</li>
+          <li>Fiduciary standard on advisory accounts</li>
+          <li>Fees and conflicts disclosed up front</li>
+        </ul>
+        <a class="button" href="#contact" data-reveal>Request a consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Questions: tabbed index cards -->
+  <section class="questions wrap" id="questions" aria-labelledby="questions-title">
+    <h2 class="head" id="questions-title" data-reveal>Fees, asked and answered</h2>
+    <div class="cards" data-reveal>
+      <div class="card card--mint" style="--n:0">
+        <button class="card__head" type="button" aria-expanded="true" aria-controls="a1" id="q1"><span class="card__tab">Tiers</span><span class="card__q">How does the tiered structure work?</span></button>
+        <div class="card__a" id="a1" role="region" aria-labelledby="q1"><div><p>Three structures, by size. Under $1M, breakpoints apply: cross $250K and your entire portfolio moves to 0.80%; cross $500K and it moves to 0.70%. From $1M to $30M, rates work like tax brackets: the first $5M at 0.50%, the next portion to $15M at 0.25%, and the next to $30M at 0.175%. Above $30M, one flat 0.25% applies to everything.</p></div></div>
+      </div>
+      <div class="card card--surface" style="--n:1">
+        <button class="card__head" type="button" aria-expanded="false" aria-controls="a2" id="q2"><span class="card__tab">Cash only</span><span class="card__q">I only want a money market. Will I be charged?</span></button>
+        <div class="card__a" id="a2" role="region" aria-labelledby="q2"><div><p>No. If you hold only a money market, a single bond or a single CD, with no broader managed portfolio, there is no advisory fee. If those positions sit inside a managed portfolio, they are included in its fee along with quieter, low-activity holdings.</p></div></div>
+      </div>
+      <div class="card card--ink" style="--n:2">
+        <button class="card__head" type="button" aria-expanded="false" aria-controls="a3" id="q3"><span class="card__tab">Commissions</span><span class="card__q">When exactly do commissions apply?</span></button>
+        <div class="card__a" id="a3" role="region" aria-labelledby="q3"><div><p>Only on certain long-held product structures where a commission is built into the product, and only when that product is the right solution for you. It is never the reason for a recommendation, and it is always disclosed before you decide. Money markets carry no commission of any kind.</p></div></div>
+      </div>
+      <div class="card card--mint" style="--n:3">
+        <button class="card__head" type="button" aria-expanded="false" aria-controls="a4" id="q4"><span class="card__tab">Fund costs</span><span class="card__q">Are fund expense ratios included in your fee?</span></button>
+        <div class="card__a" id="a4" role="region" aria-labelledby="q4"><div><p>No. Expense ratios are built into the funds themselves and are separate from my fee. Keeping them low is part of how I build every portfolio, because each basis point of fund cost is a drag on your return.</p></div></div>
+      </div>
+      <div class="card card--surface" style="--n:4">
+        <button class="card__head" type="button" aria-expanded="false" aria-controls="a5" id="q5"><span class="card__tab">Custody</span><span class="card__q">Where are my assets held?</span></button>
+        <div class="card__a" id="a5" role="region" aria-labelledby="q5"><div><p>At a regulated third-party custodian, never with me. I hold discretionary management authority, but your assets remain in your name at a regulated institution at all times.</p></div></div>
+      </div>
+      <div class="card card--ink" style="--n:5">
+        <button class="card__head" type="button" aria-expanded="false" aria-controls="a6" id="q6"><span class="card__tab">States</span><span class="card__q">Can you work with me where I live?</span></button>
+        <div class="card__a" id="a6" role="region" aria-labelledby="q6"><div><p>I work with residents of Ohio, Florida, Michigan, Illinois, Pennsylvania, Texas, South Carolina and Nevada.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact: clip-out coupon -->
+  <section class="contact wrap" id="contact" aria-labelledby="contact-title">
+    <div class="coupon" data-reveal>
+      <div class="coupon__left">
+        <span class="notch notch--a" aria-hidden="true"></span><span class="notch notch--b" aria-hidden="true"></span>
+        <h2 class="coupon__title" id="contact-title">Begin with a conversation</h2>
+        <div>
+          <p>The first meeting is complimentary: no commitment, just clarity on where you stand and where you want to go.</p>
+          <p class="coupon__direct"><a class="link-plain" href="tel:+14198871002">(419) 887-1002</a><br><a class="link-plain" href="mailto:Matthew.Pindoley@osaicwealth.com">Matthew.Pindoley@osaicwealth.com</a></p>
+        </div>
+      </div>
+      <form class="coupon__form" id="contact-form" action="mailto:Matthew.Pindoley@osaicwealth.com" method="post" enctype="text/plain">
+        <label class="sr-only" for="c-name">Your name</label>
+        <input class="field" id="c-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+        <label class="sr-only" for="c-email">Email</label>
+        <input class="field" id="c-email" name="email" type="email" autocomplete="email" placeholder="Email" required>
+        <label class="sr-only" for="c-phone">Phone</label>
+        <input class="field" id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone (optional)">
+        <label class="sr-only" for="c-topic">What would you like to talk about?</label>
+        <select class="field" id="c-topic" name="topic">
+          <option value="A full financial plan">A full financial plan</option>
+          <option value="Retirement income">Retirement income</option>
+          <option value="Investment management">Investment management</option>
+          <option value="Estate and legacy">Estate and legacy</option>
+          <option value="Insurance and tax">Insurance and tax</option>
+          <option value="Just the fees">Just the fees</option>
+        </select>
+        <button class="coupon__submit" type="submit">Request a consultation</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Matthew Pindoley, back to top">
+      <svg class="mark__svg mark--wide" viewBox="0 0 1200 300" role="img" aria-label="Pindoley"><g style="--n:0"><rect x="0.0" y="66.0" width="146.5" height="234.0" fill="var(--accent)"/><text x="73.2" y="279.0" font-size="150" text-anchor="middle">P</text></g><g style="--n:1"><rect x="150.5" y="0.0" width="146.5" height="300.0" fill="var(--bg)"/><text x="223.8" y="279.0" font-size="150" text-anchor="middle">I</text></g><g style="--n:2"><rect x="301.0" y="108.0" width="146.5" height="192.0" fill="var(--field-2-soft)"/><text x="374.2" y="279.0" font-size="150" text-anchor="middle">N</text></g><g style="--n:3"><rect x="451.5" y="30.0" width="146.5" height="270.0" fill="var(--accent)"/><text x="524.8" y="279.0" font-size="150" text-anchor="middle">D</text></g><g style="--n:4"><rect x="602.0" y="90.0" width="146.5" height="210.0" fill="var(--bg)"/><text x="675.2" y="279.0" font-size="150" text-anchor="middle">O</text></g><g style="--n:5"><rect x="752.5" y="0.0" width="146.5" height="300.0" fill="var(--field-2-soft)"/><text x="825.8" y="279.0" font-size="150" text-anchor="middle">L</text></g><g style="--n:6"><rect x="903.0" y="48.0" width="146.5" height="252.0" fill="var(--accent)"/><text x="976.2" y="279.0" font-size="150" text-anchor="middle">E</text></g><g style="--n:7"><rect x="1053.5" y="120.0" width="146.5" height="180.0" fill="var(--bg)"/><text x="1126.8" y="279.0" font-size="150" text-anchor="middle">Y</text></g></svg>
+      <svg class="mark__svg mark--tall" viewBox="0 0 600 504" role="img" aria-label="Pindoley"><g style="--n:0"><rect x="0.0" y="55.0" width="147.0" height="195.0" fill="var(--accent)"/><text x="73.5" y="232.5" font-size="125" text-anchor="middle">P</text></g><g style="--n:1"><rect x="151.0" y="0.0" width="147.0" height="250.0" fill="var(--bg)"/><text x="224.5" y="232.5" font-size="125" text-anchor="middle">I</text></g><g style="--n:2"><rect x="302.0" y="90.0" width="147.0" height="160.0" fill="var(--field-2-soft)"/><text x="375.5" y="232.5" font-size="125" text-anchor="middle">N</text></g><g style="--n:3"><rect x="453.0" y="25.0" width="147.0" height="225.0" fill="var(--accent)"/><text x="526.5" y="232.5" font-size="125" text-anchor="middle">D</text></g><g style="--n:4"><rect x="0.0" y="329.0" width="147.0" height="175.0" fill="var(--bg)"/><text x="73.5" y="486.5" font-size="125" text-anchor="middle">O</text></g><g style="--n:5"><rect x="151.0" y="254.0" width="147.0" height="250.0" fill="var(--field-2-soft)"/><text x="224.5" y="486.5" font-size="125" text-anchor="middle">L</text></g><g style="--n:6"><rect x="302.0" y="294.0" width="147.0" height="210.0" fill="var(--accent)"/><text x="375.5" y="486.5" font-size="125" text-anchor="middle">E</text></g><g style="--n:7"><rect x="453.0" y="354.0" width="147.0" height="150.0" fill="var(--bg)"/><text x="526.5" y="486.5" font-size="125" text-anchor="middle">Y</text></g></svg>
+    </a>
+    <div class="foot__grid">
+      <nav class="foot__col" aria-label="Page">
+        <h2 class="foot__h">This page</h2>
+        <ul>
+          <li><a class="link" href="#fees">Fees</a></li>
+          <li><a class="link" href="#services">Services</a></li>
+          <li><a class="link" href="#process">Process</a></li>
+          <li><a class="link" href="#about">About</a></li>
+        </ul>
+      </nav>
+      <nav class="foot__col" aria-label="Guides">
+        <h2 class="foot__h">Guides</h2>
+        <ul>
+          <li><a class="link" href="https://matthewpindoley.com/resource-retirement.html">Retirement</a></li>
+          <li><a class="link" href="https://matthewpindoley.com/resource-investment.html">Investment</a></li>
+          <li><a class="link" href="https://matthewpindoley.com/resource-estate.html">Estate planning</a></li>
+          <li><a class="link" href="https://matthewpindoley.com/resource-tax.html">Tax strategy</a></li>
+          <li><a class="link" href="https://matthewpindoley.com/resource-insurance.html">Insurance</a></li>
+          <li><a class="link" href="https://matthewpindoley.com/resource-money.html">Money and lifestyle</a></li>
+        </ul>
+      </nav>
+      <nav class="foot__col" aria-label="Regulatory">
+        <h2 class="foot__h">Regulatory</h2>
+        <ul>
+          <li><a class="link" href="https://brokercheck.finra.org/" target="_blank" rel="noopener noreferrer">FINRA BrokerCheck</a></li>
+          <li><a class="link" href="https://osaic.com/disclosures" target="_blank" rel="noopener noreferrer">Osaic Form CRS</a></li>
+          <li><a class="link" href="https://matthewpindoley.com/disclosure.html">Disclosures</a></li>
+          <li><a class="link" href="https://app.osaic.com/equipt/" target="_blank" rel="noopener noreferrer">Client login</a></li>
+        </ul>
+      </nav>
+      <div class="foot__col foot__contact">
+        <h2 class="foot__h">Contact</h2>
+        <p><a class="link" href="tel:+14198871002">(419) 887-1002</a><br><a class="link" href="mailto:Matthew.Pindoley@osaicwealth.com">Matthew.Pindoley@osaicwealth.com</a></p>
+        <p>Toledo, Ohio. Serving OH, FL, MI, IL, PA, TX, SC and NV.</p>
+      </div>
+    </div>
+
+    <div class="foot__legal small">
+      <p>Securities and investment advisory services offered through Osaic Wealth, Inc., Member <a href="https://www.finra.org" target="_blank" rel="noopener noreferrer">FINRA</a>/<a href="https://www.sipc.org" target="_blank" rel="noopener noreferrer">SIPC</a>. Osaic Wealth, Inc. is separately owned; Matthew Pindoley, Glass City Federal Credit Union, and Glass City Federal Financial Solutions are not affiliated with Osaic Wealth, Inc.</p>
+      <p>This communication is strictly intended for individuals residing in the states of OH, FL, MI, IL, PA, TX, SC, NV. No offers may be made or accepted from any resident outside the specific state(s) referenced.</p>
+      <p class="credits">Pictures: Glass Pavilion, Toledo Museum of Art, by <a href="https://commons.wikimedia.org/wiki/File:Glass_Pavilion,_Toledo_Museum_of_Art,_Monroe_Street,_Old_West_End,_Toledo,_OH_-_53666570751.jpg">Warren LeMay</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Cherry_Street_Bridge_and_Skyline,_Toledo,_Ohio_-_DPLA_-_72be9e50e797f12c4c11236e67bfbec8_(page_1).jpg">Cherry Street Bridge and Skyline postcard</a>, Ken Levin Toledo Postcard Collection, public domain; Libbey Glass Company <a href="https://www.metmuseum.org/art/collection/search/9910">wineglass</a>, <a href="https://www.metmuseum.org/art/collection/search/4090">goblet</a>, <a href="https://www.metmuseum.org/art/collection/search/2260">cordial glass</a>, <a href="https://www.metmuseum.org/art/collection/search/7429">sherbet glass</a> and <a href="https://www.metmuseum.org/art/collection/search/9911">wineglass</a>, 1904, The Metropolitan Museum of Art, CC0, backgrounds evened; <a href="https://commons.wikimedia.org/wiki/File:Glass_block_wall_sunlight_reflection_Zl%C3%ADn.JPG">Glass block wall, Zlín</a> by Mark Ahsmann, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>; film <a href="https://commons.wikimedia.org/wiki/File:Glass_blowing_forming_the_body,_part2.webm">Glass-blowing II: forming the body</a> by Konrad Gutkowski and Jonathan Nicolai, LWL-Industriemuseum, <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>, trimmed. All via Wikimedia Commons unless noted.</p>
+    </div>
+    <div class="foot__last small">
+      <p>© 2026 Matthew Pindoley Financial Advisory. All rights reserved.</p>
+      <a class="button button--small" href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="assets/js/site.js"></script>
+<script type="module" src="assets/js/glass.js"></script>
+</body>
+</html>

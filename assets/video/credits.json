@@ -1,0 +1,28 @@
+[
+ {
+  "file": "assets/video/glassblowing.webm",
+  "media": "video",
+  "poster": "assets/video/glassblowing-poster.jpg",
+  "ref": "commons:75157494",
+  "title": "Glass-blowing II: forming the body",
+  "creator": "Sound recordist: Konrad Gutkowski / Jonathan Nicolai, Video recordist: Konrad Gutkowski / Jonathan Nicolai, Photo: Konrad Gutkowski / Jonathan Nicolai",
+  "creatorUrl": null,
+  "date": "2010s",
+  "license": "CC BY 3.0",
+  "licenseCode": "by",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "creditRequired": true,
+  "page": "https://commons.wikimedia.org/wiki/File:Glass_blowing_forming_the_body,_part2.webm",
+  "via": "Wikimedia Commons",
+  "video": "https://upload.wikimedia.org/wikipedia/commons/transcoded/0/07/Glass_blowing_forming_the_body%2C_part2.webm/Glass_blowing_forming_the_body%2C_part2.webm.480p.vp9.webm",
+  "width": 854,
+  "height": 480,
+  "duration": 93.7,
+  "bytes": 6060080,
+  "credit": "\"Glass-blowing II: forming the body\" by Sound recordist: Konrad Gutkowski / Jonathan Nicolai, Video\u2026, CC BY 3.0, via Wikimedia Commons",
+  "notes": [
+   "Trimmed to 43.5s\u201356.5s, muted, re-encoded (webm + mp4)."
+  ],
+  "saved": "2026-11-03T14:53:39.728Z"
+ }
+]
