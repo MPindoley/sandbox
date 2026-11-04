@@ -1,28 +1,28 @@
 [
  {
-  "file": "assets/video/glassblowing.webm",
+  "file": "assets/video/movement.mp4",
   "media": "video",
-  "poster": "assets/video/glassblowing-poster.jpg",
-  "ref": "commons:75157494",
-  "title": "Glass-blowing II: forming the body",
-  "creator": "Sound recordist: Konrad Gutkowski / Jonathan Nicolai, Video recordist: Konrad Gutkowski / Jonathan Nicolai, Photo: Konrad Gutkowski / Jonathan Nicolai",
+  "poster": "assets/video/movement-poster.jpg",
+  "ref": "commons:118320123",
+  "title": "Hettich-Schwebegang-Uhrwerk in Aktion",
+  "creator": "Christoph Waghubinger ( Lewenstein )",
   "creatorUrl": null,
-  "date": "2010s",
-  "license": "CC BY 3.0",
-  "licenseCode": "by",
-  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "date": "2022-05-24",
+  "license": "CC BY-SA 4.0",
+  "licenseCode": "by-sa",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
   "creditRequired": true,
-  "page": "https://commons.wikimedia.org/wiki/File:Glass_blowing_forming_the_body,_part2.webm",
+  "page": "https://commons.wikimedia.org/wiki/File:Hettich-Schwebegang-Uhrwerk_in_Aktion.webm",
   "via": "Wikimedia Commons",
-  "video": "https://upload.wikimedia.org/wikipedia/commons/transcoded/0/07/Glass_blowing_forming_the_body%2C_part2.webm/Glass_blowing_forming_the_body%2C_part2.webm.480p.vp9.webm",
-  "width": 854,
-  "height": 480,
-  "duration": 93.7,
-  "bytes": 6060080,
-  "credit": "\"Glass-blowing II: forming the body\" by Sound recordist: Konrad Gutkowski / Jonathan Nicolai, Video\u2026, CC BY 3.0, via Wikimedia Commons",
+  "video": "https://upload.wikimedia.org/wikipedia/commons/transcoded/6/6b/Hettich-Schwebegang-Uhrwerk_in_Aktion.webm/Hettich-Schwebegang-Uhrwerk_in_Aktion.webm.1080p.vp9.webm",
+  "width": 1920,
+  "height": 1080,
+  "duration": 24.3,
+  "bytes": 2335249,
+  "credit": "\"Hettich-Schwebegang-Uhrwerk in Aktion\" by Christoph Waghubinger ( Lewenstein ), CC BY-SA 4.0, via Wikimedia Commons",
   "notes": [
-   "Trimmed to 43.5s\u201356.5s, muted, re-encoded (webm + mp4)."
+   "Trimmed to 10 s, cropped square on the balance, muted."
   ],
-  "saved": "2026-11-03T14:53:39.728Z"
+  "saved": "2026-11-03T21:02:01.912Z"
  }
 ]

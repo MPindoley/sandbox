@@ -1,5 +1,3 @@
-import { calcFee, parseAmount } from './fee.js';
-
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -17,8 +15,22 @@ nav.addEventListener('click', (e) => {
   if (e.target.closest('a') && nav.classList.contains('is-open')) toggle.click();
 });
 
+/* ---------- the name fills the measure exactly, on one line wherever it sits on one line ---------- */
+const name = $('.hero__name');
+const fitName = () => {
+  name.style.fontSize = '';
+  if (getComputedStyle(name).whiteSpace !== 'nowrap') return;
+  name.style.setProperty('--name-scale', 1); // measure unscaled; the scroll effect repaints it
+  const range = document.createRange();
+  range.selectNodeContents(name.querySelector('[data-line]'));
+  const text = range.getBoundingClientRect().width;
+  if (text) name.style.fontSize = `${(parseFloat(getComputedStyle(name).fontSize) * name.clientWidth / text) * 0.998}px`;
+};
+document.fonts.ready.then(fitName);
+addEventListener('resize', fitName);
+
 /* ---------- reveal once, never leave content hidden ---------- */
-const targets = $$('[data-reveal], .process__diagram');
+const targets = $$('[data-reveal]');
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
     for (const e of entries) if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
@@ -30,103 +42,72 @@ if ('IntersectionObserver' in window) {
   }), 2500));
 } else targets.forEach((el) => el.classList.add('is-in'));
 
-/* ---------- videos play only while on screen, never under reduced motion ---------- */
-const videos = $$('video');
+/* ---------- the film loads and plays only while on screen, never under reduced motion ---------- */
 if (!reduced && 'IntersectionObserver' in window) {
   const vio = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      const v = e.target;
-      // the statement's thumbnail plays the process film's own file instead of a second copy
-      if (v.dataset.share && !v.src) v.src = document.querySelector(v.dataset.share)?.src || '';
-      e.isIntersecting ? v.play().catch(() => {}) : v.pause();
+    for (const { target: v, isIntersecting } of entries) {
+      if (isIntersecting && !v.src && v.dataset.src) v.src = v.dataset.src;
+      isIntersecting ? v.play().catch(() => {}) : v.pause();
     }
   }, { threshold: 0.2 });
-  videos.forEach((v) => vio.observe(v));
+  $$('video').forEach((v) => vio.observe(v));
 }
 
-/* ---------- fee calculator ---------- */
-const text = $('#aum-text');
-const range = $('#aum-range');
-const out = $('#fee-out');
-const detail = $('#fee-detail');
-const partsEl = $('#fee-parts');
-const rows = $$('.schedule tbody tr');
-const money = (n) => '$' + Math.round(n).toLocaleString('en-US');
-const pct = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 3 });
-// slider runs on a log scale, $10K to $50M, so every tier gets room
-const MIN = 4, SPAN = Math.log10(50e6) - 4;
-const toAum = (t) => { const v = 10 ** (MIN + (t / 1000) * SPAN); const p = 10 ** (Math.floor(Math.log10(v)) - 1); return Math.round(v / p) * p; };
-const toT = (aum) => Math.round(Math.min(1, Math.max(0, (Math.log10(Math.max(aum, 1e4)) - MIN) / SPAN)) * 1000);
-
-// the figure rolls to its new value; screen readers hear the settled result once
-const live = $('#fee-live');
-let shown = null, rollId = 0, liveTimer;
-function roll(to) {
-  if (reduced || shown === null) { shown = to; out.textContent = money(to); return; }
-  const from = shown, t0 = performance.now(), id = ++rollId;
-  const step = (now) => {
-    if (id !== rollId) return;
-    const k = Math.min(1, (now - t0) / 450);
-    shown = from + (to - from) * (1 - (1 - k) ** 3);
-    out.textContent = money(shown);
-    if (k < 1) requestAnimationFrame(step);
+/* ---------- services index: the description of whatever is pointed at or focused ---------- */
+const desc = $('.index__desc');
+if (desc) {
+  const rest = desc.textContent;
+  let timer;
+  const show = (text, cap) => {
+    $$('.cap.is-on').forEach((c) => c.classList.remove('is-on'));
+    cap?.classList.add('is-on');
+    if (desc.textContent === text) return;
+    clearTimeout(timer);
+    desc.classList.add('is-swapping');
+    timer = setTimeout(() => { desc.textContent = text; desc.classList.remove('is-swapping'); }, reduced ? 0 : 160);
   };
-  requestAnimationFrame(step);
-}
-
-function render(aum) {
-  const r = calcFee(aum);
-  roll(r.fee);
-  detail.textContent = aum > 0
-    ? `${pct.format((r.fee / aum) * 100)}% effective · ${money(r.fee / 12)} a month · ${money(r.fee / 4)} a quarter`
-    : 'Enter a portfolio value to see the fee.';
-  clearTimeout(liveTimer);
-  liveTimer = setTimeout(() => { live.textContent = `Estimated annual fee ${money(r.fee)}. ${detail.textContent}`; }, 600);
-  partsEl.replaceChildren(...r.parts.map((p) => {
-    const li = document.createElement('li');
-    for (const t of [p.label, p.rate, money(p.fee)]) { const s = document.createElement('span'); s.textContent = t; li.append(s); }
-    return li;
-  }));
-  const active = r.structure === 'flat' ? [6]
-    : r.structure === 'marginal' ? r.parts.map((_, i) => 3 + i)
-    : r.structure === 'breakpoint' ? [aum >= 500e3 ? 2 : aum >= 250e3 ? 1 : 0] : [];
-  rows.forEach((row, i) => row.classList.toggle('is-active', active.includes(i)));
-}
-
-text.addEventListener('input', () => {
-  const v = parseAmount(text.value);
-  const ok = !Number.isNaN(v) && v >= 0;
-  text.setAttribute('aria-invalid', String(!ok && text.value.trim() !== ''));
-  if (ok) { render(v); range.value = toT(v); }
-});
-text.addEventListener('blur', () => {
-  const v = parseAmount(text.value);
-  if (!Number.isNaN(v)) text.value = money(v);
-});
-range.addEventListener('input', () => {
-  const v = toAum(Number(range.value));
-  text.value = money(v);
-  text.removeAttribute('aria-invalid');
-  render(v);
-});
-const start = parseAmount(text.value);
-range.value = toT(start);
-render(start);
-
-/* ---------- question cards: one open at a time ---------- */
-const heads = $$('.card__head');
-function openCard(btn) {
-  for (const h of heads) {
-    const on = h === btn;
-    h.setAttribute('aria-expanded', String(on));
-    document.getElementById(h.getAttribute('aria-controls')).hidden = !on;
+  for (const cap of $$('.cap')) {
+    // the description is also the button's accessible description, so it is heard as well as seen
+    const id = `d-${Math.random().toString(36).slice(2, 8)}`;
+    cap.insertAdjacentHTML('afterend', `<span class="sr-only" id="${id}">${cap.dataset.desc}</span>`);
+    cap.setAttribute('aria-describedby', id);
+    cap.addEventListener('pointerenter', () => show(cap.dataset.desc, cap));
+    cap.addEventListener('focus', () => show(cap.dataset.desc, cap));
+    cap.addEventListener('click', () => show(cap.dataset.desc, cap));
   }
+  $('.index').addEventListener('pointerleave', () => show(rest));
 }
-heads.forEach((h) => h.addEventListener('click', () => {
-  if (h.getAttribute('aria-expanded') === 'true') return;
-  openCard(h);
-}));
-openCard(heads[0]);
+
+/* ---------- approach: buttons, progress and drag for the row of moments ---------- */
+const row = $('.moments');
+if (row) {
+  const fill = $('.approach__fill');
+  const [prev, next] = $$('.approach__btn');
+  const step = () => row.querySelector('.moment').getBoundingClientRect().width + parseFloat(getComputedStyle(row).columnGap || 0);
+  const update = () => {
+    const max = row.scrollWidth - row.clientWidth;
+    const p = max > 0 ? row.scrollLeft / max : 1;
+    const seen = row.clientWidth / row.scrollWidth; // the bar starts at the share already in view
+    fill.style.setProperty('--p', (seen + p * (1 - seen)).toFixed(3));
+    prev.disabled = row.scrollLeft < 4;
+    next.disabled = row.scrollLeft > max - 4;
+  };
+  for (const b of [prev, next]) b.addEventListener('click', () => row.scrollBy({ left: Number(b.dataset.dir) * step(), behavior: reduced ? 'auto' : 'smooth' }));
+  row.addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+  update();
+
+  // drag with a mouse; touch and trackpads scroll natively
+  let down = null;
+  row.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') return; down = { x: e.clientX, left: row.scrollLeft, moved: false }; });
+  addEventListener('pointermove', (e) => {
+    if (!down) return;
+    const dx = e.clientX - down.x;
+    if (Math.abs(dx) > 4) { down.moved = true; row.classList.add('is-dragging'); }
+    row.scrollLeft = down.left - dx;
+  });
+  addEventListener('pointerup', () => { down = null; row.classList.remove('is-dragging'); });
+}
 
 /* ---------- consultation request opens an email with the visitor's answers ---------- */
 const form = $('#contact-form');

@@ -3,11 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-single.mjs",
-    "test": "node tests/fee.test.mjs"
+    "build": "node scripts/build-single.mjs"
   },
   "devDependencies": {
-    "esbuild": "0.24.0",
-    "three": "0.170.0"
+    "esbuild": "0.24.0"
   }
 }
