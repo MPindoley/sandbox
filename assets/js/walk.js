@@ -1,6 +1,8 @@
 // The walk: scrolling plays a film from the street, up into the tower and out to the view.
-// Frames are drawn to a canvas and blended with their neighbour, so motion stays smooth between frames
-// and while later frames are still arriving. Without the script the first frame stands as a still.
+// Every frame's compressed bytes are fetched (a coarse pass first, then nearest to the visitor first), but only
+// the frames around the current position are decoded, off the main thread, so drawing never waits on a decode.
+// Each frame is blended with its neighbour and the film position glides toward the scroll, so the motion is
+// continuous. Without the script the first frame stands as a still.
 const sec = document.querySelector('.walk');
 
 if (sec) {
@@ -12,49 +14,85 @@ if (sec) {
   const beats = [...sec.querySelectorAll('.beat')];
   const sweep = sec.querySelector('.sweep');
   const COUNT = Number(sec.dataset.frames);
-  const SCENES = [0, 63, 117, 155, 203]; // first frame of each scene, in COUNT frames
-  const STILLS = [20, 92, 140, 182, 240]; // the frame each scene settles on under reduced motion
-  const BEAT_FRAMES = [0, 92, 140, 182, COUNT - 1]; // where each line sits in the film
+  const SCENES = [0, 125, 242, 292, 364]; // where each scene starts, in COUNT frames
+  const STILLS = [40, 181, 268, 311, 440]; // the frame each scene settles on under reduced motion
+  const BEAT_FRAMES = [0, 181, 268, 311, COUNT - 1]; // where each line sits in the film
+  const KEEP = 12; // every KEEP-th frame stays decoded, so a fast jump always has something close to show
+  const NEAR = 30; // decoded frames kept around the visitor
   const clamp01 = (v) => Math.min(1, Math.max(0, v));
 
-  let urls = [], frames = [], scale = 1, anchors = [], top = 0, span = 1, raf = 0, pos = -1, shown = false;
+  let urls = [], blobs = [], bitmaps = new Map(), decoding = new Set(), want = [], inflight = 0, gen = 0;
+  let scale = 1, anchors = [], top = 0, span = 1, raf = 0, last = 0, cur = 0, target = 0, dir = 1, vel = 0, drawn = -1, shown = false;
+  const n = () => urls.length;
+  const kept = (i) => reduced ? STILLS.some((f) => Math.round(f * scale) === i) : i % KEEP === 0 || i === n() - 1;
 
-  // ---------- loading: a coarse pass first so the whole walk works at once, then the gaps ----------
-  let queue = [], inflight = 0, generation = 0;
-  const pump = () => {
-    const gen = generation;
-    while (inflight < 6 && queue.length) {
-      const i = queue.shift();
-      if (frames[i]) continue;
+  // ---------- fetching: coarse frames first, then whichever is nearest the visitor, a little ahead ----------
+  const fetchMore = () => {
+    const g = gen;
+    while (inflight < 6 && want.length) {
+      const c = cur * scale + dir * 6;
+      let best = 0, bd = Infinity;
+      for (let k = 0; k < want.length; k++) {
+        const d = (kept(want[k]) ? 0 : 1e6) + Math.abs(want[k] - c);
+        if (d < bd) { bd = d; best = k; }
+      }
+      const i = want.splice(best, 1)[0];
       inflight++;
-      const img = new Image();
-      img.decoding = 'async';
-      img.src = urls[i];
-      img.decode().then(() => { if (gen === generation) { frames[i] = img; pos = -1; paint(); } }, () => {})
-        .finally(() => { inflight--; if (gen === generation) pump(); });
+      fetch(urls[i]).then((r) => (r.ok ? r.blob() : null)).then((b) => {
+        if (g !== gen || !b) return;
+        blobs[i] = b;
+        decodeNear();
+      }).catch(() => {}).finally(() => { if (g === gen) { inflight--; fetchMore(); } });
     }
   };
+
+  // ---------- decoding: off the main thread, around the visitor, the rest released ----------
+  const decode = (i) => {
+    const g = gen;
+    decoding.add(i);
+    createImageBitmap(blobs[i]).then((bmp) => {
+      decoding.delete(i);
+      if (g !== gen) { bmp.close(); return; }
+      bitmaps.set(i, bmp);
+      release();
+      drawn = -1; paint(); decodeNear();
+    }, () => decoding.delete(i));
+  };
+  // ahead in the scroll direction, spaced by the current speed: at speed the film lands on every few frames,
+  // so those are the ones to have ready
+  const decodeNear = () => {
+    const c = Math.round(cur * scale), stride = Math.max(1, Math.round(Math.abs(vel) * scale));
+    const want = (i) => i >= 0 && i < n() && blobs[i] && !bitmaps.has(i) && !decoding.has(i) && decoding.size < 4;
+    for (let d = 0; d <= 14 && decoding.size < 4; d++) {
+      const ahead = c + dir * d * stride, behind = c - dir * d;
+      if (want(ahead)) decode(ahead);
+      if (d <= 4 && want(behind)) decode(behind);
+    }
+    for (let i = 0; i < n() && decoding.size < 4; i++) if (kept(i) && want(i)) decode(i);
+  };
+  const release = () => {
+    const c = cur * scale;
+    const near = [...bitmaps.keys()].filter((i) => !kept(i)).sort((a, b) => Math.abs(b - c) - Math.abs(a - c));
+    for (const i of near.slice(0, Math.max(0, near.length - NEAR))) { bitmaps.get(i).close(); bitmaps.delete(i); }
+  };
+
   const load = () => {
-    generation++; inflight = 0;
+    gen++; inflight = 0;
+    for (const b of bitmaps.values()) b.close();
+    bitmaps = new Map(); decoding = new Set();
     const set = portrait.matches ? 'p' : 'd';
     // the single-file build carries its own (thinned) frames
     urls = window.__walk?.[set] ?? Array.from({ length: COUNT }, (_, i) => `${sec.dataset.base}/${set}/${String(i).padStart(3, '0')}.webp`);
     scale = (urls.length - 1) / (COUNT - 1);
-    frames = new Array(urls.length).fill(null);
-    const want = new Set();
-    if (reduced) STILLS.forEach((f) => want.add(Math.round(f * scale)));
-    else for (const step of saveData ? [16, 8] : [16, 8, 4, 2, 1]) for (let i = 0; i < urls.length; i += step) want.add(i);
-    want.add(urls.length - 1);
-    queue = [...want];
-    pos = -1;
-    pump();
+    blobs = new Array(urls.length).fill(null);
+    want = [];
+    for (let i = 0; i < urls.length; i++) if (reduced ? kept(i) : saveData ? i % 8 === 0 || kept(i) : true) want.push(i);
+    drawn = -1;
+    fetchMore();
   };
 
   // ---------- layout: where the stage scrolls and where each line meets its frame ----------
   const measure = () => {
-    const dpr = Math.min(devicePixelRatio || 1, 2);
-    const w = Math.round(canvas.clientWidth * dpr), h = Math.round(canvas.clientHeight * dpr);
-    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; pos = -1; }
     top = sec.getBoundingClientRect().top + scrollY;
     span = Math.max(1, sec.offsetHeight - innerHeight);
     // the film passes each line's frame as that line is centred on screen
@@ -70,42 +108,45 @@ if (sec) {
     return COUNT - 1;
   };
 
-  // ---------- drawing: the nearest loaded frame on each side, mixed by distance ----------
-  const cover = (img, alpha) => {
-    const cw = canvas.width, ch = canvas.height, k = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
-    const w = img.naturalWidth * k, h = img.naturalHeight * k;
-    ctx.globalAlpha = alpha;
-    ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
-  };
+  // ---------- drawing: the nearest decoded frame on each side, mixed by distance ----------
   const draw = (f) => {
     let at = f * scale;
-    if (reduced) { // one still per scene, no motion between them
-      const s = SCENES.findLastIndex((start) => f >= start);
-      at = Math.round(STILLS[s] * scale);
+    if (reduced) at = Math.round(STILLS[SCENES.findLastIndex((s) => f >= s)] * scale); // one still per scene
+    let a = -1, b = -1;
+    for (const i of bitmaps.keys()) {
+      if (i <= at && i > a) a = i;
+      if (i >= at && (b < 0 || i < b)) b = i;
     }
-    let a = Math.floor(at), b = Math.ceil(at);
-    while (a > 0 && !frames[a]) a--;
-    while (b < frames.length - 1 && !frames[b]) b++;
-    if (!frames[a]) a = b;
-    if (!frames[b]) b = a;
-    if (!frames[a]) return; // nothing yet: the poster stays
+    if (a < 0) a = b;
+    if (b < 0) b = a;
+    if (a < 0) return; // nothing decoded yet: the poster stays
+    const A = bitmaps.get(a), B = bitmaps.get(b);
+    // the canvas keeps the frames' own size; the page scales it to cover the screen
+    if (canvas.width !== A.width || canvas.height !== A.height) { canvas.width = A.width; canvas.height = A.height; }
     const t = b > a ? clamp01((at - a) / (b - a)) : 0;
-    cover(frames[a], 1);
-    if (t > 0.002) cover(frames[b], t);
+    ctx.globalAlpha = 1;
+    ctx.drawImage(A, 0, 0, canvas.width, canvas.height);
+    if (t > 0.002) { ctx.globalAlpha = t; ctx.drawImage(B, 0, 0, canvas.width, canvas.height); }
     if (!shown) { shown = true; sec.classList.add('is-film'); }
   };
 
-  // ---------- each scroll: the film and the lines ----------
+  // ---------- each frame: the film glides toward the scroll; the lines follow the scroll itself ----------
   const paint = () => { if (!raf) raf = requestAnimationFrame(frame); };
-  const frame = () => {
+  const frame = (now = performance.now()) => {
     raf = 0;
+    const dt = Math.min(64, now - (last || now)); last = now;
+    if (scrollY > top + span + innerHeight) { last = 0; return; } // the walk is behind us
     const p = clamp01((scrollY - top) / span);
-    if (scrollY > top + span + innerHeight) return; // the walk is behind us
-    const f = frameAt(p);
-    if (Math.abs(f - pos) > 0.01 || !shown) { draw(f); pos = f; }
+    target = frameAt(p);
+    const step = target - cur, was = cur;
+    if (Math.abs(step) > 0.05) dir = Math.sign(step);
+    cur = reduced || Math.abs(step) < 0.02 ? target : cur + step * (1 - Math.pow(0.7, dt / 16.7));
+    vel = vel * 0.75 + (cur - was) * 0.25; // frames per paint
+    if (Math.abs(cur - drawn) > 0.005) { draw(cur); drawn = cur; decodeNear(); }
+    if (cur !== target) paint(); else last = 0;
+
     sec.style.setProperty('--p', p.toFixed(4));
     sec.classList.toggle('is-moving', p > 0.01);
-
     // a line fades in as it rises into place and out as it leaves; the first is already there
     const vh = innerHeight;
     beats.forEach((b, i) => {
@@ -119,10 +160,11 @@ if (sec) {
   };
 
   measure();
+  cur = target = frameAt(clamp01((scrollY - top) / span));
   load();
   frame();
   addEventListener('scroll', paint, { passive: true });
-  addEventListener('resize', () => { measure(); pos = -1; paint(); });
+  addEventListener('resize', () => { measure(); drawn = -1; paint(); });
   portrait.addEventListener('change', () => { load(); measure(); paint(); });
   document.fonts?.ready.then(() => { measure(); paint(); });
 }

@@ -1,10 +1,10 @@
 {
- "file": "assets/walk/{d,p}/000-255.webp",
+ "file": "assets/walk/{d,p}/000-455.webp",
  "media": "image sequence",
- "frames": 256,
+ "frames": 456,
  "notes": [
-  "Five clips retimed and joined with 0.25 s crossfades, graded (70% colour under a 45% green-to-ivory duotone, edge darkening).",
-  "d: 1600×900 for landscape screens; p: 540×960 portrait crops for phones."
+  "Five clips sampled at 10 to 12 frames per second of real motion, joined with 0.4 s crossfades, graded (70% colour under a 45% green-to-ivory duotone, edge darkening).",
+  "d: 1280×720 for landscape screens; p: 540×960 portrait crops for phones."
  ],
  "license": "Mixkit Stock Video Free License",
  "licenseUrl": "https://mixkit.co/license/#videoFree",
@@ -32,7 +32,7 @@
    "ref": "mixkit:15795",
    "title": "Silhouette of business handshake in skyscraper",
    "page": "https://mixkit.co/free-stock-video/silhouette-of-business-handshake-in-skyscraper-15795/",
-   "used": "0.4s to 9s"
+   "used": "0.4s to 8.6s"
   },
   {
    "ref": "mixkit:3516",
