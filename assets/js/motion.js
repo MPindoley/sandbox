@@ -29,12 +29,12 @@ document.addEventListener('click', (e) => {
   target.focus({ preventScroll: true });
 });
 
-/* ---------- header: solid once past the photograph, hides going down, returns going up ---------- */
-const photo = $('.hero__photo');
+/* ---------- header: clear over the walk, solid after it; hides going down, returns going up ---------- */
+const walk = $('.walk');
 let lastY = scrollY;
 const onHeader = () => {
   const y = scrollY;
-  head.classList.toggle('is-solid', y > photo.offsetHeight - head.offsetHeight);
+  head.classList.toggle('is-solid', y > walk.offsetHeight - head.offsetHeight);
   const menuOpen = $('.site-nav.is-open');
   if (!menuOpen && y > innerHeight * 0.8 && y > lastY + 2) head.classList.add('is-hidden');
   if (y < lastY - 2 || menuOpen) head.classList.remove('is-hidden');
@@ -56,35 +56,6 @@ if (!reduced) {
   };
   addEventListener('scroll', paintScroll, { passive: true });
   paintScroll();
-
-  /* ---------- the held sentence lights word by word while the rooms pass ---------- */
-  const st = $('.intro__statement');
-  const track = $('.intro__track');
-  if (st) {
-    const walk = document.createTreeWalker(st, NodeFilter.SHOW_TEXT);
-    const nodes = [];
-    while (walk.nextNode()) if (walk.currentNode.textContent.trim()) nodes.push(walk.currentNode);
-    for (const n of nodes) {
-      const frag = document.createDocumentFragment();
-      for (const part of n.textContent.split(/(\s+)/)) {
-        if (!part) continue;
-        if (/^\s+$/.test(part)) { frag.append(part); continue; }
-        frag.append(Object.assign(document.createElement('span'), { className: 'w', textContent: part }));
-      }
-      n.replaceWith(frag);
-    }
-    const words = $$('.w', st);
-    st.classList.add('is-scrubbed');
-    const paint = () => {
-      const r = track.getBoundingClientRect();
-      const p = clamp01((innerHeight * 0.65 - r.top) / Math.max(1, r.height * 0.55));
-      const lit = p * words.length;
-      words.forEach((w, i) => w.style.setProperty('--lit', clamp01(lit - i).toFixed(3)));
-    };
-    addEventListener('scroll', paint, { passive: true });
-    addEventListener('resize', paint);
-    paint();
-  }
 
   /* ---------- section headings rise line by line, then return to plain text ---------- */
   const lineIO = new IntersectionObserver((entries) => {

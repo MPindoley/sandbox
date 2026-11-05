@@ -43,32 +43,54 @@
 
 <main id="main">
 
-  <!-- Hero: the colonnade above, the name below -->
-  <section class="hero" id="top" aria-labelledby="hero-title">
-    <figure class="hero__photo">
-      <img src="assets/img/h/colonnade.jpg" width="2400" height="781" alt="The Ionic colonnade of the Toledo Museum of Art, built in 1912" fetchpriority="high">
-    </figure>
-    <div class="hero__band wrap">
-      <div class="hero__row" data-load style="--d:520ms">
-        <p class="hero__lead">Fiduciary wealth management in Toledo, Ohio. From first steps to generational wealth.</p>
-        <div class="hero__actions">
-          <a class="link-plain" href="https://brokercheck.finra.org/" target="_blank" rel="noopener noreferrer">FINRA BrokerCheck</a>
-          <a class="button" href="#contact">Request a consultation</a>
+  <!-- The walk: scrolling walks a film from the street, up into the tower and out to the view; each scene carries one line -->
+  <section class="walk" id="top" aria-labelledby="hero-title" data-frames="256" data-base="assets/walk">
+    <div class="walk__stage" aria-hidden="true">
+      <picture class="walk__poster">
+        <source media="(max-aspect-ratio: 4/5)" srcset="assets/walk/p/000.webp">
+        <img src="assets/walk/d/000.webp" width="1600" height="900" alt="" fetchpriority="high">
+      </picture>
+      <canvas class="walk__film"></canvas>
+      <div class="walk__shade"></div>
+      <div class="walk__meta wrap">
+        <span class="walk__bar"><span class="walk__fill"></span></span>
+        <span class="walk__hint">Scroll to walk</span>
+      </div>
+    </div>
+    <div class="walk__beats">
+      <div class="beat beat--hero hero">
+        <div class="beat__in wrap">
+          <div class="hero__row" data-load style="--d:520ms">
+            <p class="hero__lead">Fiduciary wealth management in Toledo, Ohio. From first steps to generational wealth.</p>
+            <div class="hero__actions">
+              <a class="link-plain" href="https://brokercheck.finra.org/" target="_blank" rel="noopener noreferrer">FINRA BrokerCheck</a>
+              <a class="button" href="#contact">Request a consultation</a>
+            </div>
+          </div>
+          <h1 class="hero__name lines" id="hero-title"><span class="line"><span data-line style="--i:0">Matthew Pindoley</span></span></h1>
         </div>
       </div>
-      <h1 class="hero__name lines" id="hero-title"><span class="line"><span data-line style="--i:0">Matthew Pindoley</span></span></h1>
-    </div>
-  </section>
-
-  <!-- Philosophy: one sentence holds while the rooms of the city pass -->
-  <section class="intro" aria-label="Philosophy">
-    <div class="intro__track">
-      <div class="intro__pin wrap">
-        <p class="intro__statement">Some things are built to outlast the people who build them. Your family’s wealth should be one.</p>
+      <div class="beat">
+        <div class="beat__in wrap"><p class="beat__say">Some things are built to <span class="sweep" data-word="outlast">outlast</span> us.</p></div>
       </div>
-      <figure class="intro__ph intro__ph--a" data-reveal><img src="assets/img/h/foyer-1890.jpg" width="960" height="1190" alt="The staircase hall of an Old West End house in Toledo, about 1890" loading="lazy"></figure>
-      <figure class="intro__ph intro__ph--b" data-reveal><img src="assets/img/h/peristyle.jpg" width="2400" height="1800" alt="The Peristyle concert hall at the Toledo Museum of Art" loading="lazy"></figure>
-      <figure class="intro__ph intro__ph--c" data-reveal><img src="assets/img/h/watch-1640.jpg" width="900" height="900" alt="A silver watch made by Robert Grinkin in London, about 1640" loading="lazy"></figure>
+      <div class="beat beat--right">
+        <div class="beat__in wrap"><p class="beat__say">Your family’s wealth should be one.</p></div>
+      </div>
+      <div class="beat">
+        <div class="beat__in wrap">
+          <p class="beat__say">Advice held to a fiduciary standard.</p>
+          <p class="beat__note">On advisory accounts I act in your best interest, and every cost and potential conflict is disclosed before you decide. SE-AWMA®.</p>
+        </div>
+      </div>
+      <div class="beat beat--end">
+        <div class="beat__in wrap">
+          <p class="beat__say">Build it. Protect it. Pass it on.</p>
+          <div class="hero__actions">
+            <a class="button" href="#contact">Request a consultation</a>
+            <a class="link-plain" href="#services">What I look after</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -276,7 +298,7 @@
     <div class="foot__legal small">
       <p>Securities and investment advisory services offered through Osaic Wealth, Inc., Member <a href="https://www.finra.org" target="_blank" rel="noopener noreferrer">FINRA</a>/<a href="https://www.sipc.org" target="_blank" rel="noopener noreferrer">SIPC</a>. Osaic Wealth, Inc. is separately owned; Matthew Pindoley, Glass City Federal Credit Union, and Glass City Federal Financial Solutions are not affiliated with Osaic Wealth, Inc.</p>
       <p>This communication is strictly intended for individuals residing in the states of OH, FL, MI, IL, PA, TX, SC, NV. No offers may be made or accepted from any resident outside the specific state(s) referenced.</p>
-      <p class="credits">Pictures, toned in green: <a href="https://commons.wikimedia.org/wiki/File:Toledo_Museum_of_Art_exterior_02.jpg">Toledo Museum of Art exterior</a> by Ɱ, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; <a href="https://commons.wikimedia.org/wiki/File:The_Peristyle.jpg">The Peristyle</a> by Mbrickn, CC BY-SA 4.0; <a href="https://commons.wikimedia.org/wiki/File:Judge_Julian_and_Lily_Heller_Tyler_house,_Old_West_End,_Toledo,_Ohio.jpg">Tyler house, Old West End</a> by Abgwin, CC BY-SA 4.0; Old West End <a href="https://commons.wikimedia.org/wiki/File:Old_West_End_Foyer,_Toledo,_Ohio_(approximately_1890)_-_DPLA_-_96f9ba0fa6034ea47b3e3688e8f70fbc.jpg">foyer</a> and <a href="https://commons.wikimedia.org/wiki/File:Old_West_End_Parlor,_Toledo,_Ohio_(approximately_1890)_-_DPLA_-_13fafa4d17e25f1ea8e792d655c5dcab.jpg">parlor</a> by H. E. Richards, about 1890, public domain; Toledo Museum of Art postcards, <a href="https://commons.wikimedia.org/wiki/File:Toledo_Museum_of_Art,_Toledo,_Ohio_-_DPLA_-_05229147cc64dbf1f17679afee340d64_(page_1).jpg">Detroit Publishing Co.</a>, <a href="https://commons.wikimedia.org/wiki/File:Toledo_Museum_of_Art;_Toledo,_Ohio_-_DPLA_-_12516c74e10b0f8ba7aab31f544270a7_(page_1).jpg">early view</a> and <a href="https://commons.wikimedia.org/wiki/File:Toledo_Museum_of_Art_-_Peristyle,_Toledo,_Ohio_-_DPLA_-_c42828a62a809e3dd786bccc4219d3c1_(page_1).jpg">Peristyle</a>, public domain; watches by <a href="https://www.metmuseum.org/art/collection/search/194074">Robert Grinkin</a> and <a href="https://www.metmuseum.org/art/collection/search/193730">Jacob Wybrants</a>, The Metropolitan Museum of Art, CC0; film <a href="https://commons.wikimedia.org/wiki/File:Hettich-Schwebegang-Uhrwerk_in_Aktion.webm">Hettich-Schwebegang-Uhrwerk in Aktion</a> by Christoph Waghubinger, CC BY-SA 4.0, cropped.</p>
+      <p class="credits">Pictures, toned in green: <a href="https://commons.wikimedia.org/wiki/File:Judge_Julian_and_Lily_Heller_Tyler_house,_Old_West_End,_Toledo,_Ohio.jpg">Tyler house, Old West End</a> by Abgwin, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; an Old West End <a href="https://commons.wikimedia.org/wiki/File:Old_West_End_Parlor,_Toledo,_Ohio_(approximately_1890)_-_DPLA_-_13fafa4d17e25f1ea8e792d655c5dcab.jpg">parlor</a> by H. E. Richards, about 1890, public domain; Toledo Museum of Art postcards, <a href="https://commons.wikimedia.org/wiki/File:Toledo_Museum_of_Art,_Toledo,_Ohio_-_DPLA_-_05229147cc64dbf1f17679afee340d64_(page_1).jpg">Detroit Publishing Co.</a>, <a href="https://commons.wikimedia.org/wiki/File:Toledo_Museum_of_Art;_Toledo,_Ohio_-_DPLA_-_12516c74e10b0f8ba7aab31f544270a7_(page_1).jpg">early view</a> and <a href="https://commons.wikimedia.org/wiki/File:Toledo_Museum_of_Art_-_Peristyle,_Toledo,_Ohio_-_DPLA_-_c42828a62a809e3dd786bccc4219d3c1_(page_1).jpg">Peristyle</a>, public domain; a watch by <a href="https://www.metmuseum.org/art/collection/search/193730">Jacob Wybrants</a>, The Metropolitan Museum of Art, CC0; film <a href="https://commons.wikimedia.org/wiki/File:Hettich-Schwebegang-Uhrwerk_in_Aktion.webm">Hettich-Schwebegang-Uhrwerk in Aktion</a> by Christoph Waghubinger, CC BY-SA 4.0, cropped. The opening walk is cut from five <a href="https://mixkit.co/license/#videoFree">Mixkit</a> clips, retimed and graded.</p>
     </div>
 
     <a class="foot__mark" href="#top" aria-label="Matthew Pindoley, back to top">
@@ -288,5 +310,6 @@
 
 <script type="module" src="assets/js/site.js"></script>
 <script type="module" src="assets/js/motion.js"></script>
+<script type="module" src="assets/js/walk.js"></script>
 </body>
 </html>

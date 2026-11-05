@@ -1,53 +1,5 @@
 [
  {
-  "file": "assets/img/h/colonnade.jpg",
-  "media": "image",
-  "ref": "commons:103818437",
-  "title": "Toledo Museum of Art exterior 02",
-  "creator": "\u2c6e",
-  "creatorUrl": null,
-  "date": "2021-03-14",
-  "license": "CC BY-SA 4.0",
-  "licenseCode": "by-sa",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "creditRequired": true,
-  "page": "https://commons.wikimedia.org/wiki/File:Toledo_Museum_of_Art_exterior_02.jpg",
-  "via": "Wikimedia Commons",
-  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Toledo_Museum_of_Art_exterior_02.jpg/3840px-Toledo_Museum_of_Art_exterior_02.jpg",
-  "width": 3840,
-  "height": 2603,
-  "bytes": 2557185,
-  "credit": "\"Toledo Museum of Art exterior 02\" by \u2c6e, CC BY-SA 4.0, via Wikimedia Commons",
-  "notes": [
-   "Cropped, toned green (duotone) and edge-darkened."
-  ],
-  "saved": "2026-11-03T20:58:01.447Z"
- },
- {
-  "file": "assets/img/h/peristyle.jpg",
-  "media": "image",
-  "ref": "commons:80318008",
-  "title": "The Peristyle",
-  "creator": "Mbrickn",
-  "creatorUrl": null,
-  "date": "2019-07-09",
-  "license": "CC BY-SA 4.0",
-  "licenseCode": "by-sa",
-  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-  "creditRequired": true,
-  "page": "https://commons.wikimedia.org/wiki/File:The_Peristyle.jpg",
-  "via": "Wikimedia Commons",
-  "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/The_Peristyle.jpg/3840px-The_Peristyle.jpg",
-  "width": 3840,
-  "height": 2880,
-  "bytes": 885008,
-  "credit": "\"The Peristyle\" by Mbrickn, CC BY-SA 4.0, via Wikimedia Commons",
-  "notes": [
-   "Cropped, toned green (duotone) and edge-darkened."
-  ],
-  "saved": "2026-11-03T20:58:04.350Z"
- },
- {
   "file": "assets/img/h/tyler-house-wide.jpg",
   "media": "image",
   "ref": "commons:126135549",
@@ -72,30 +24,6 @@
   "saved": "2026-11-03T20:58:04.577Z"
  },
  {
-  "file": "assets/img/h/foyer-1890.jpg",
-  "media": "image",
-  "ref": "commons:117194864",
-  "title": "Old West End Foyer, Toledo, Ohio (approximately 1890) - DPLA - 96f9ba0fa6034ea47b3e3688e8f70fbc",
-  "creator": "Richards, H. E",
-  "creatorUrl": null,
-  "date": "1890",
-  "license": "public domain",
-  "licenseCode": "pd",
-  "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
-  "creditRequired": false,
-  "page": "https://commons.wikimedia.org/wiki/File:Old_West_End_Foyer,_Toledo,_Ohio_(approximately_1890)_-_DPLA_-_96f9ba0fa6034ea47b3e3688e8f70fbc.jpg",
-  "via": "Wikimedia Commons",
-  "image": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Old_West_End_Foyer%2C_Toledo%2C_Ohio_%28approximately_1890%29_-_DPLA_-_96f9ba0fa6034ea47b3e3688e8f70fbc.jpg",
-  "width": 2199,
-  "height": 1364,
-  "bytes": 273560,
-  "credit": "\"Old West End Foyer, Toledo, Ohio (approximately 1890) - DPLA - 96f9ba0fa6034ea47b3e3688e8\u2026\" by Richards, H. E, public domain, via Wikimedia Commons",
-  "notes": [
-   "Cropped, toned green (duotone) and edge-darkened."
-  ],
-  "saved": "2026-11-03T20:58:04.858Z"
- },
- {
   "file": "assets/img/h/parlor-1890.jpg",
   "media": "image",
   "ref": "commons:159250889",
@@ -113,7 +41,7 @@
   "width": 2199,
   "height": 1387,
   "bytes": 272430,
-  "credit": "\"Old West End Parlor, Toledo, Ohio (approximately 1890) - DPLA - 13fafa4d17e25f1ea8e792d65\u2026\" by Richards, H. E, public domain, via Wikimedia Commons",
+  "credit": "\"Old West End Parlor, Toledo, Ohio (approximately 1890) - DPLA - 13fafa4d17e25f1ea8e792d65…\" by Richards, H. E, public domain, via Wikimedia Commons",
   "notes": [
    "Cropped, toned green (duotone) and edge-darkened."
   ],
@@ -190,30 +118,6 @@
    "Cropped, toned green (duotone) and edge-darkened."
   ],
   "saved": "2026-11-03T20:58:04.171Z"
- },
- {
-  "file": "assets/img/h/watch-1640.jpg",
-  "media": "image",
-  "ref": "met:194074",
-  "title": "Watch",
-  "creator": "Robert Grinkin",
-  "creatorUrl": null,
-  "date": "ca. 1640\u201350",
-  "license": "public domain (CC0)",
-  "licenseCode": "cc0",
-  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-  "creditRequired": false,
-  "page": "https://www.metmuseum.org/art/collection/search/194074",
-  "via": "The Metropolitan Museum of Art",
-  "image": "https://images.metmuseum.org/CRDImages/es/original/DP-12603-043.jpg",
-  "width": 4000,
-  "height": 4000,
-  "bytes": 1937990,
-  "credit": "\"Watch\" by Robert Grinkin, ca. 1640\u201350, public domain (CC0), via The Metropolitan Museum of Art",
-  "notes": [
-   "Cropped, toned green (duotone) and edge-darkened."
-  ],
-  "saved": "2026-11-03T21:01:18.218Z"
  },
  {
   "file": "assets/img/h/watch-crystal.jpg",
