@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-03T15:38:23.897Z",
+        "reason": "Claude measured in Chromium: fee panel (.plan) text sits 32px+ from the edge at 1440 and 17px at 768; .plan--cash carries its padding on the inner .plan__sticky wrapper, which the detector does not see"
+      }
+    ]
+  }
+}

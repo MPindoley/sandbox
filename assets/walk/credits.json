@@ -1,0 +1,44 @@
+{
+ "file": "assets/walk/{d,p}/coarse.bin (every 16th frame), chunk-00.bin to chunk-14.bin (the other frames, 32 in a row), poster.webp (frame 0)",
+ "media": "image sequence",
+ "frames": 456,
+ "notes": [
+  "Built by scripts/walk-frames.sh: five clips sampled at 10 to 12 frames per second of real motion, joined with 0.4 s crossfades, graded (70% colour under a 45% green-to-ivory duotone, edge darkening).",
+  "d: 1280×720 for landscape screens; p: 540×960 portrait crops for phones."
+ ],
+ "license": "Mixkit Stock Video Free License",
+ "licenseUrl": "https://mixkit.co/license/#videoFree",
+ "creditRequired": false,
+ "sources": [
+  {
+   "ref": "mixkit:40637",
+   "title": "Street between large buildings at sunset at Christmas",
+   "page": "https://mixkit.co/free-stock-video/street-between-large-buildings-at-sunset-at-christmas-40637/",
+   "used": "0s to 13s"
+  },
+  {
+   "ref": "mixkit:25269",
+   "title": "Man walking into office building",
+   "page": "https://mixkit.co/free-stock-video/man-walking-into-office-building-25269/",
+   "used": "0s to 10.5s"
+  },
+  {
+   "ref": "mixkit:40701",
+   "title": "Skyscraper in the city seen when walking the street",
+   "page": "https://mixkit.co/free-stock-video/skyscraper-in-the-city-seen-when-walking-the-street-40701/",
+   "used": "0s to 5s"
+  },
+  {
+   "ref": "mixkit:15795",
+   "title": "Silhouette of business handshake in skyscraper",
+   "page": "https://mixkit.co/free-stock-video/silhouette-of-business-handshake-in-skyscraper-15795/",
+   "used": "0.4s to 8.6s"
+  },
+  {
+   "ref": "mixkit:3516",
+   "title": "Urban view from a rooftop and the sunset",
+   "page": "https://mixkit.co/free-stock-video/urban-view-from-a-rooftop-and-the-sunset-3516/",
+   "used": "0s to 8s"
+  }
+ ]
+}
