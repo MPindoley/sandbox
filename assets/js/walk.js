@@ -1,8 +1,9 @@
 // The walk: scrolling plays a film from the street, up into the tower and out to the view.
-// Every frame's compressed bytes are fetched (a coarse pass first, then nearest to the visitor first), but only
-// the frames around the current position are decoded, off the main thread, so drawing never waits on a decode.
-// Each frame is blended with its neighbour and the film position glides toward the scroll, so the motion is
-// continuous. Without the script the first frame stands as a still.
+// The frames come in a few packs: a small coarse one with every 16th frame, so the whole walk works at once,
+// then chunks of 32 frames in a row, fetched nearest the visitor first. Only the frames around the current
+// position are decoded, off the main thread, so drawing never waits on a decode. Each frame is blended with
+// its neighbour and the film position glides toward the scroll, so the motion is continuous.
+// Without the script the first frame stands as a still.
 const sec = document.querySelector('.walk');
 
 if (sec) {
@@ -14,35 +15,42 @@ if (sec) {
   const beats = [...sec.querySelectorAll('.beat')];
   const sweep = sec.querySelector('.sweep');
   const COUNT = Number(sec.dataset.frames);
-  const SCENES = [0, 125, 242, 292, 364]; // where each scene starts, in COUNT frames
-  const STILLS = [40, 181, 268, 311, 440]; // the frame each scene settles on under reduced motion
+  const COARSE = 16, CHUNK = 32; // as written by scripts/walk-frames.sh
+  const SCENES = [0, 125, 242, 292, 364]; // where each scene starts
+  const STILLS = [48, 176, 272, 304, 432]; // the frame each scene settles on under reduced motion (all coarse)
   const BEAT_FRAMES = [0, 181, 268, 311, COUNT - 1]; // where each line sits in the film
-  const KEEP = 12; // every KEEP-th frame stays decoded, so a fast jump always has something close to show
-  const NEAR = 30; // decoded frames kept around the visitor
+  const NEAR = 30; // decoded frames kept around the visitor; the coarse frames stay decoded as the fallback
   const clamp01 = (v) => Math.min(1, Math.max(0, v));
+  const range = (a, b, step = 1) => Array.from({ length: Math.max(0, Math.ceil((b - a) / step)) }, (_, i) => a + i * step);
 
-  let urls = [], blobs = [], bitmaps = new Map(), decoding = new Set(), want = [], inflight = 0, gen = 0;
-  let scale = 1, anchors = [], top = 0, span = 1, raf = 0, last = 0, cur = 0, target = 0, dir = 1, vel = 0, drawn = -1, shown = false;
-  const n = () => urls.length;
-  const kept = (i) => reduced ? STILLS.some((f) => Math.round(f * scale) === i) : i % KEEP === 0 || i === n() - 1;
+  let blobs = [], bitmaps = new Map(), decoding = new Set(), chunks = [], inflight = 0, gen = 0;
+  let anchors = [], top = 0, span = 1, raf = 0, last = 0, cur = 0, target = 0, dir = 1, vel = 0, drawn = -1, shown = false;
+  const kept = (i) => i % COARSE === 0;
 
-  // ---------- fetching: coarse frames first, then whichever is nearest the visitor, a little ahead ----------
-  const fetchMore = () => {
+  // ---------- fetching: the coarse pack, then the chunk nearest the visitor (a little ahead), two at a time ----------
+  const split = (buf, frames) => { // a pack is WebP files laid end to end, each stating its own length
+    const v = new DataView(buf);
+    for (let o = 0, j = 0; o + 8 <= buf.byteLength && j < frames.length; j++) {
+      const len = v.getUint32(o + 4, true) + 8;
+      blobs[frames[j]] = new Blob([buf.slice(o, o + len)], { type: 'image/webp' });
+      o += len;
+    }
+  };
+  const get = (pack) => {
     const g = gen;
-    while (inflight < 12 && want.length) { // many small requests in flight: the server multiplexes them
-      const c = cur * scale + dir * 6;
-      let best = 0, bd = Infinity;
-      for (let k = 0; k < want.length; k++) {
-        const d = (kept(want[k]) ? 0 : 1e6) + Math.abs(want[k] - c);
-        if (d < bd) { bd = d; best = k; }
-      }
-      const i = want.splice(best, 1)[0];
-      inflight++;
-      fetch(urls[i]).then((r) => (r.ok ? r.blob() : null)).then((b) => {
-        if (g !== gen || !b) return;
-        blobs[i] = b;
-        decodeNear();
-      }).catch(() => {}).finally(() => { if (g === gen) { inflight--; fetchMore(); } });
+    inflight++;
+    fetch(pack.url).then((r) => (r.ok ? r.arrayBuffer() : null)).then((buf) => {
+      if (g !== gen || !buf) return;
+      split(buf, pack.frames);
+      decodeNear();
+    }).catch(() => {}).finally(() => { if (g === gen) { inflight--; fetchMore(); } });
+  };
+  const fetchMore = () => {
+    while (inflight < 2 && chunks.length) {
+      const c = cur + dir * CHUNK / 2;
+      let best = 0;
+      chunks.forEach((p, k) => { if (Math.abs(p.mid - c) < Math.abs(chunks[best].mid - c)) best = k; });
+      get(chunks.splice(best, 1)[0]);
     }
   };
 
@@ -61,33 +69,36 @@ if (sec) {
   // ahead in the scroll direction, spaced by the current speed: at speed the film lands on every few frames,
   // so those are the ones to have ready
   const decodeNear = () => {
-    const c = Math.round(cur * scale), stride = Math.max(1, Math.round(Math.abs(vel) * scale));
-    const want = (i) => i >= 0 && i < n() && blobs[i] && !bitmaps.has(i) && !decoding.has(i) && decoding.size < 4;
+    const c = Math.round(cur), stride = Math.max(1, Math.round(Math.abs(vel)));
+    const want = (i) => i >= 0 && i < COUNT && blobs[i] && !bitmaps.has(i) && !decoding.has(i) && decoding.size < 4;
+    if (reduced) { for (const i of STILLS) if (want(i)) decode(i); return; }
     for (let d = 0; d <= 14 && decoding.size < 4; d++) {
       const ahead = c + dir * d * stride, behind = c - dir * d;
       if (want(ahead)) decode(ahead);
       if (d <= 4 && want(behind)) decode(behind);
     }
-    for (let i = 0; i < n() && decoding.size < 4; i++) if (kept(i) && want(i)) decode(i);
+    for (let i = 0; i < COUNT && decoding.size < 4; i += COARSE) if (want(i)) decode(i);
   };
   const release = () => {
-    const c = cur * scale;
-    const near = [...bitmaps.keys()].filter((i) => !kept(i)).sort((a, b) => Math.abs(b - c) - Math.abs(a - c));
+    const near = [...bitmaps.keys()].filter((i) => !kept(i)).sort((a, b) => Math.abs(b - cur) - Math.abs(a - cur));
     for (const i of near.slice(0, Math.max(0, near.length - NEAR))) { bitmaps.get(i).close(); bitmaps.delete(i); }
   };
 
   const load = () => {
     gen++; inflight = 0;
     for (const b of bitmaps.values()) b.close();
-    bitmaps = new Map(); decoding = new Set();
-    const set = portrait.matches ? 'p' : 'd';
-    // the single-file build carries its own (thinned) frames
-    urls = window.__walk?.[set] ?? Array.from({ length: COUNT }, (_, i) => `${sec.dataset.base}/${set}/${String(i).padStart(3, '0')}.webp`);
-    scale = (urls.length - 1) / (COUNT - 1);
-    blobs = new Array(urls.length).fill(null);
-    want = [];
-    for (let i = 0; i < urls.length; i++) if (reduced ? kept(i) : saveData ? i % 8 === 0 || kept(i) : true) want.push(i);
+    bitmaps = new Map(); decoding = new Set(); blobs = new Array(COUNT).fill(null);
+    const set = portrait.matches ? 'p' : 'd', base = `${sec.dataset.base}/${set}`;
+    // the single-file build carries its own packs, thinned to every second frame
+    const packs = window.__walk?.[set] ?? [
+      { url: `${base}/coarse.bin`, frames: range(0, COUNT, COARSE) },
+      ...range(0, Math.ceil(COUNT / CHUNK)).map((c) => ({
+        url: `${base}/chunk-${String(c).padStart(2, '0')}.bin`, frames: range(c * CHUNK, Math.min(COUNT, (c + 1) * CHUNK)).filter((i) => !kept(i)),
+      })),
+    ];
+    chunks = reduced || saveData ? [] : packs.slice(1).map((p) => ({ ...p, mid: (p.frames[0] + p.frames[p.frames.length - 1]) / 2 }));
     drawn = -1;
+    get(packs[0]); // the coarse pack first: the whole walk, at once
     fetchMore();
   };
 
@@ -110,8 +121,7 @@ if (sec) {
 
   // ---------- drawing: the nearest decoded frame on each side, mixed by distance ----------
   const draw = (f) => {
-    let at = f * scale;
-    if (reduced) at = Math.round(STILLS[SCENES.findLastIndex((s) => f >= s)] * scale); // one still per scene
+    const at = reduced ? STILLS[SCENES.findLastIndex((s) => f >= s)] : f; // reduced motion: one still per scene
     let a = -1, b = -1;
     for (const i of bitmaps.keys()) {
       if (i <= at && i > a) a = i;

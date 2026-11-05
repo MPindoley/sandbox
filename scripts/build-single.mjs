@@ -1,6 +1,6 @@
 // Builds dist/index.html: the whole site in one file (CSS, fonts, scripts, images and the film inlined),
 // so it opens from disk or uploads anywhere as a single page.  Run: npm run build
-import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { extname, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build, transform } from 'esbuild';
@@ -22,9 +22,25 @@ const script = js.outputFiles[0].text.replace(/<\/script/gi, '<\\/script');
 const rawCss = readFileSync(at('assets/css/fonts.css'), 'utf8') + readFileSync(at('assets/css/site.css'), 'utf8');
 const css = (await transform(rawCss.replace(/url\(\.\.\/fonts\/([\w.-]+)\)/g, (_, f) => `url(${dataUri(`assets/fonts/${f}`)})`), { loader: 'css', minify: true })).code;
 
-// the walk: every second frame of each set, so the film stays smooth at half the weight
-const walkSet = (set) => readdirSync(at(`assets/walk/${set}`)).filter((f) => f.endsWith('.webp')).sort()
-  .filter((_, i, all) => i % 2 === 0 || i === all.length - 1).map((f) => dataUri(`assets/walk/${set}/${f}`));
+// the walk: its packs thinned to every second frame (the coarse pack whole), each with the frames it holds
+const FRAMES = Number(readFileSync(at('index.html'), 'utf8').match(/data-frames="(\d+)"/)[1]);
+const webps = (buf) => { // a pack is WebP files laid end to end, each stating its own length
+  const out = [];
+  for (let o = 0; o + 8 <= buf.length; o += buf.readUInt32LE(o + 4) + 8) out.push(buf.subarray(o, o + buf.readUInt32LE(o + 4) + 8));
+  return out;
+};
+const walkSet = (set) => {
+  const packs = [{ file: 'coarse.bin', frames: [...Array(Math.ceil(FRAMES / 16)).keys()].map((i) => i * 16) }];
+  for (let c = 0; c * 32 < FRAMES; c++) {
+    packs.push({ file: `chunk-${String(c).padStart(2, '0')}.bin`, frames: [...Array(32).keys()].map((i) => c * 32 + i).filter((i) => i < FRAMES && i % 16) });
+  }
+  return packs.map(({ file, frames }, k) => {
+    const parts = webps(readFileSync(at(`assets/walk/${set}/${file}`)));
+    if (parts.length !== frames.length) throw new Error(`assets/walk/${set}/${file}: ${parts.length} frames, expected ${frames.length}`);
+    const keep = frames.map((f, j) => [f, j]).filter(([f]) => k === 0 || f % 2 === 0);
+    return { frames: keep.map(([f]) => f), url: `data:application/octet-stream;base64,${Buffer.concat(keep.map(([, j]) => parts[j])).toString('base64')}` };
+  });
+};
 const walkFrames = JSON.stringify({ d: walkSet('d'), p: walkSet('p') });
 
 let html = readFileSync(at('index.html'), 'utf8');

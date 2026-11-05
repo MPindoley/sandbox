@@ -1,9 +1,9 @@
 {
- "file": "assets/walk/{d,p}/000-455.webp",
+ "file": "assets/walk/{d,p}/coarse.bin (every 16th frame), chunk-00.bin to chunk-14.bin (the other frames, 32 in a row), poster.webp (frame 0)",
  "media": "image sequence",
  "frames": 456,
  "notes": [
-  "Five clips sampled at 10 to 12 frames per second of real motion, joined with 0.4 s crossfades, graded (70% colour under a 45% green-to-ivory duotone, edge darkening).",
+  "Built by scripts/walk-frames.sh: five clips sampled at 10 to 12 frames per second of real motion, joined with 0.4 s crossfades, graded (70% colour under a 45% green-to-ivory duotone, edge darkening).",
   "d: 1280×720 for landscape screens; p: 540×960 portrait crops for phones."
  ],
  "license": "Mixkit Stock Video Free License",
