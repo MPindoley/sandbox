@@ -29,7 +29,7 @@ if (sec) {
   // ---------- fetching: coarse frames first, then whichever is nearest the visitor, a little ahead ----------
   const fetchMore = () => {
     const g = gen;
-    while (inflight < 6 && want.length) {
+    while (inflight < 12 && want.length) { // many small requests in flight: the server multiplexes them
       const c = cur * scale + dir * 6;
       let best = 0, bd = Infinity;
       for (let k = 0; k < want.length; k++) {
